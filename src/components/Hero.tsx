@@ -6,11 +6,22 @@ import { Calendar, MapPin, Users, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import AnimatedCounter from "./ui/AnimatedCounter"
 
-const badges = [
-  { icon: Calendar, label: "24 мая 2025" },
-  { icon: MapPin, label: "Лужники" },
-  { icon: Users, label: "10 000+ участников" },
-]
+function parseBadges(subtitle?: string) {
+  // subtitle format: "17 мая 2026 • Садовое кольцо" or similar
+  if (subtitle && subtitle.includes("•")) {
+    const parts = subtitle.split("•").map(s => s.trim())
+    return [
+      { icon: Calendar, label: parts[0] || "24 мая 2025" },
+      { icon: MapPin, label: parts[1] || "Лужники" },
+      { icon: Users, label: "10 000+ участников" },
+    ]
+  }
+  return [
+    { icon: Calendar, label: subtitle || "24 мая 2025" },
+    { icon: MapPin, label: "Лужники" },
+    { icon: Users, label: "10 000+ участников" },
+  ]
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -30,6 +41,7 @@ interface HeroProps {
 }
 
 export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: HeroProps) {
+  const badges = parseBadges(subtitle)
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
   const circleY1 = useTransform(scrollYProgress, [0, 1], [0, -80])
