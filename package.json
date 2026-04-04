@@ -6,7 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "npx tsx src/seed/index.ts"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "latest",
