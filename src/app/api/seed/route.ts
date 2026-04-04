@@ -139,6 +139,7 @@ export async function POST() {
             title: s.title,
             slug,
             category: categoryMap[s.category] || 'competitions',
+            contentHtml: s.content || '',
             time: s.time || '',
             registration_url: s.registration || '',
             images: imageIds,

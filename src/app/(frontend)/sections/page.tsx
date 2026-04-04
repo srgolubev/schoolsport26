@@ -21,6 +21,8 @@ export default async function SectionsPage() {
     slug: s.slug,
     category: s.category,
     time: s.time || undefined,
+    contentHtml: (s as unknown as Record<string, string>).contentHtml || undefined,
+    registration_url: s.registration_url || undefined,
     images: Array.isArray(s.images)
       ? s.images.map((img) => ({
           url: typeof img === 'object' && img !== null ? (img as { url?: string }).url || '' : '',
@@ -32,7 +34,7 @@ export default async function SectionsPage() {
   return (
     <div className="py-24 md:py-32 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Секции фестиваля" subtitle="96 секций в 8 категориях" />
+        <SectionHeader title="Секции фестиваля" subtitle={`${sections.length} секций`} />
         <SectionsFilter sections={sections} />
       </div>
     </div>

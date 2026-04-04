@@ -37,6 +37,7 @@ export const Sections: CollectionConfig = {
       ],
     },
     { name: 'content', type: 'richText' },
+    { name: 'contentHtml', type: 'textarea', admin: { description: 'HTML-описание секции (legacy из JSON)' } },
     { name: 'images', type: 'upload', relationTo: 'media', hasMany: true },
     { name: 'time', type: 'text' },
     { name: 'registration_url', type: 'text' },
