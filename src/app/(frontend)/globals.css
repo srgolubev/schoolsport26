@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Golos Text';
+  src: url('/fonts/GolosText-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
+  --color-accent: #f97316;
+  --color-accent-dark: #ea580c;
+  --color-bg: #EFEFEF;
+  --color-bg-white: #FFFFFF;
+  --color-foreground: #1a1a1a;
+  --color-muted: #6B7280;
+  --color-dark: #1a1a1a;
+}
+
+:root {
+  --background: #EFEFEF;
+  --foreground: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Golos Text', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 26, 0.4);
+}
