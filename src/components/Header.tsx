@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
@@ -14,6 +15,8 @@ const navLinks = [
 ]
 
 export default function Header() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
   const [isScrolled, setIsScrolled] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -56,6 +59,11 @@ export default function Header() {
   const handleNavClick = (href: string, isPage?: boolean) => {
     setMobileOpen(false)
     if (isPage) return
+    if (!isHome) {
+      // Navigate to homepage with hash
+      window.location.href = "/" + href
+      return
+    }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: "smooth" })
   }
@@ -75,10 +83,12 @@ export default function Header() {
           </a>
 
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              const resolvedHref = link.isPage ? link.href : (isHome ? link.href : "/" + link.href)
+              return (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolvedHref}
                 onClick={(e) => {
                   if (!link.isPage) {
                     e.preventDefault()
@@ -100,7 +110,8 @@ export default function Header() {
                   />
                 )}
               </a>
-            ))}
+              )
+            })}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -138,10 +149,12 @@ export default function Header() {
             transition={{ duration: 0.25 }}
           >
             <nav className="flex flex-col px-4 pb-4 pt-2 gap-1">
-              {navLinks.map((link) => (
+              {navLinks.map((link) => {
+                const resolvedHref = link.isPage ? link.href : (isHome ? link.href : "/" + link.href)
+                return (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={resolvedHref}
                   onClick={(e) => {
                     if (!link.isPage) {
                       e.preventDefault()
@@ -152,7 +165,8 @@ export default function Header() {
                 >
                   {link.label}
                 </a>
-              ))}
+                )
+              })}
               <a
                 href="https://gorizonty.mos.ru/events/18948"
                 target="_blank"

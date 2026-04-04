@@ -22,6 +22,9 @@ const categoryLabels: Record<string, string> = {
   masterclass: "Мастер-классы",
   skatepark: "Скейт-парк",
   "balance-bikes": "Беговелы",
+  extreme: "Экстрим",
+  press: "Пресс-центр",
+  titans: "Титаны",
 }
 
 export default function SectionsFilter({ sections }: { sections: Section[] }) {
