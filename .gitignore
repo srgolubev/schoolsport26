@@ -1,1 +1,21 @@
 *.DS_Store
+
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+
+# Payload CMS
+database.db
+database.db-shm
+database.db-wal
+media/
+
+# Environment
+.env.local
+.env.production
+
+# Generated
+src/app/(payload)/admin/importMap.js

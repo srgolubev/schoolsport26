@@ -1,0 +1,44 @@
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import path from 'path'
+import { buildConfig } from 'payload'
+import { fileURLToPath } from 'url'
+
+import { Users } from './collections/Users'
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+
+export default buildConfig({
+  admin: {
+    user: Users.slug,
+  },
+  collections: [Users],
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET || 'fallback-secret-do-not-use-in-production',
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  db: sqliteAdapter({
+    client: {
+      url: process.env.DATABASE_URL || 'file:./database.db',
+    },
+  }),
+  onInit: async (payload) => {
+    const existingUsers = await payload.find({
+      collection: 'users',
+      limit: 1,
+    })
+
+    if (existingUsers.totalDocs === 0) {
+      await payload.create({
+        collection: 'users',
+        data: {
+          email: 'admin@festival.ru',
+          password: 'changeme123',
+        },
+      })
+      payload.logger.info('Default admin user created: admin@festival.ru')
+    }
+  },
+})
