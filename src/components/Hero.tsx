@@ -116,7 +116,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         🏆
       </motion.div>
 
-      {/* Character illustrations (desktop) */}
+      {/* Character illustrations — desktop: absolute sides, mobile: bottom row */}
       <motion.div
         className="absolute bottom-0 left-8 2xl:left-16 z-10 pointer-events-none hidden lg:block"
         initial={{ opacity: 0, x: -50 }}
@@ -124,13 +124,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         transition={{ delay: 0.9, duration: 0.7, ease: "easeOut" }}
         style={{ y: illustrationY }}
       >
-        <Image
-          src="/images/girl3.webp"
-          alt="Участница"
-          width={300}
-          height={450}
-          className="w-48 xl:w-64 2xl:w-80 h-auto"
-        />
+        <Image src="/images/girl3.webp" alt="Участница" width={300} height={450} className="w-48 xl:w-64 2xl:w-80 h-auto" />
       </motion.div>
       <motion.div
         className="absolute bottom-0 right-8 2xl:right-16 z-10 pointer-events-none hidden lg:block"
@@ -139,17 +133,29 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         transition={{ delay: 1.0, duration: 0.7, ease: "easeOut" }}
         style={{ y: illustrationY }}
       >
-        <Image
-          src="/images/boy2.webp"
-          alt="Участник"
-          width={300}
-          height={450}
-          className="w-48 xl:w-64 2xl:w-80 h-auto"
-        />
+        <Image src="/images/boy2.webp" alt="Участник" width={300} height={450} className="w-48 xl:w-64 2xl:w-80 h-auto" />
       </motion.div>
 
+      {/* Mobile characters — bottom of hero */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none flex justify-between items-end lg:hidden px-2">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+        >
+          <Image src="/images/girl3.webp" alt="Участница" width={200} height={300} className="w-28 sm:w-36 h-auto" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
+        >
+          <Image src="/images/boy2.webp" alt="Участник" width={200} height={300} className="w-28 sm:w-36 h-auto" />
+        </motion.div>
+      </div>
+
       {/* Content */}
-      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center py-16 lg:py-20">
+      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-16 pb-36 sm:pb-44 lg:py-20">
         <motion.div
           className="text-xs font-semibold text-white/80 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
