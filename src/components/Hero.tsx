@@ -143,19 +143,19 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
         >
-          <Image src="/images/girl3.webp" alt="Участница" width={200} height={300} className="w-28 sm:w-36 h-auto" />
+          <Image src="/images/girl3.webp" alt="Участница" width={300} height={450} className="w-40 sm:w-48 h-auto" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
         >
-          <Image src="/images/boy2.webp" alt="Участник" width={200} height={300} className="w-28 sm:w-36 h-auto" />
+          <Image src="/images/boy2.webp" alt="Участник" width={300} height={450} className="w-40 sm:w-48 h-auto" />
         </motion.div>
       </div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-16 pb-36 sm:pb-44 lg:py-20">
+      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-16 pb-48 sm:pb-56 lg:py-20">
         <motion.div
           className="text-xs font-semibold text-white/80 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
