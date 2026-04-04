@@ -5,6 +5,12 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Users } from './collections/Users'
+import { Media } from './collections/Media'
+import { Sections } from './collections/Sections'
+import { Activities } from './collections/Activities'
+import { Partners } from './collections/Partners'
+import { Schedule } from './collections/Schedule'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -13,7 +19,8 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users],
+  collections: [Users, Media, Sections, Activities, Partners, Schedule],
+  globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-do-not-use-in-production',
   typescript: {
