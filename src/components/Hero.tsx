@@ -138,7 +138,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
 
       {/* Mobile characters — large, clipped at bottom/sides */}
       <motion.div
-        className="absolute -bottom-32 -left-12 z-10 pointer-events-none lg:hidden"
+        className="absolute bottom-24 -left-12 z-10 pointer-events-none lg:hidden"
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
@@ -146,7 +146,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         <Image src="/images/girl3.webp" alt="Участница" width={500} height={750} className="w-[240px] sm:w-[300px] h-auto" />
       </motion.div>
       <motion.div
-        className="absolute -bottom-32 -right-12 z-10 pointer-events-none lg:hidden"
+        className="absolute bottom-24 -right-12 z-10 pointer-events-none lg:hidden"
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
