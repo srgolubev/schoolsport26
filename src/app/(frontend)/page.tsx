@@ -12,9 +12,9 @@ export default async function HomePage() {
 
   const [settings, activitiesResult, scheduleResult, partnersResult] = await Promise.all([
     payload.findGlobal({ slug: 'site-settings' }),
-    payload.find({ collection: 'activities', sort: 'order', limit: 50, depth: 1 }),
-    payload.find({ collection: 'schedule', sort: 'order', limit: 50 }),
-    payload.find({ collection: 'partners', sort: 'order', limit: 50, depth: 1 }),
+    payload.find({ collection: 'activities', sort: 'sortOrder', limit: 50, depth: 1 }),
+    payload.find({ collection: 'schedule', sort: 'sortOrder', limit: 50 }),
+    payload.find({ collection: 'partners', sort: 'sortOrder', limit: 50, depth: 1 }),
   ])
 
   const activities = activitiesResult.docs.map((a) => ({

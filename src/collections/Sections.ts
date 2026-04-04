@@ -37,6 +37,6 @@ export const Sections: CollectionConfig = {
     { name: 'images', type: 'upload', relationTo: 'media', hasMany: true },
     { name: 'time', type: 'text' },
     { name: 'registration_url', type: 'text' },
-    { name: 'order', type: 'number', defaultValue: 0, admin: { position: 'sidebar' } },
+    { name: 'sortOrder', type: 'number', defaultValue: 0, admin: { position: 'sidebar' } },
   ],
 }

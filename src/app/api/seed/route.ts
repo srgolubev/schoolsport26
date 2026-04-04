@@ -54,7 +54,7 @@ export async function POST() {
     for (let i = 0; i < scheduleData.length; i++) {
       await payload.create({
         collection: 'schedule',
-        data: { time: scheduleData[i].time, event_name: scheduleData[i].event, stage: 'main', order: i },
+        data: { time: scheduleData[i].time, event_name: scheduleData[i].event, stage: 'main', sortOrder: i },
       })
     }
     log.push(`Seeded ${scheduleData.length} schedule items`)
@@ -64,9 +64,10 @@ export async function POST() {
     for (let i = 0; i < partnersData.length; i++) {
       const p = partnersData[i]
       const logoId = await uploadImage(payload, p.logo, p.name)
+      if (!logoId) { log.push(`Skipped partner ${p.name} (no logo)`); continue }
       await payload.create({
         collection: 'partners',
-        data: { name: p.name, logo: logoId, url: p.link || '', tier: 'silver', order: i },
+        data: { name: p.name, logo: logoId, url: p.link || '', tier: 'silver', sortOrder: i },
       })
     }
     log.push(`Seeded ${partnersData.length} partners`)
@@ -85,7 +86,7 @@ export async function POST() {
       }
       await payload.create({
         collection: 'activities',
-        data: { title: a.title, age_range: a.category || '', images: imageIds, order: i },
+        data: { title: a.title, age_range: a.category || '', images: imageIds, sortOrder: i },
       })
     }
     log.push(`Seeded ${activities.length} activities`)
@@ -111,7 +112,7 @@ export async function POST() {
           time: s.time || '',
           registration_url: s.registration || '',
           images: imageIds,
-          order: i,
+          sortOrder: i,
         },
       })
     }

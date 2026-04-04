@@ -9,6 +9,6 @@ export const Activities: CollectionConfig = {
     { name: 'description', type: 'richText' },
     { name: 'images', type: 'upload', relationTo: 'media', hasMany: true },
     { name: 'age_range', type: 'text' },
-    { name: 'order', type: 'number', defaultValue: 0 },
+    { name: 'sortOrder', type: 'number', defaultValue: 0 },
   ],
 }

@@ -9,6 +9,6 @@ export const Schedule: CollectionConfig = {
     { name: 'event_name', type: 'text', required: true },
     { name: 'description', type: 'text' },
     { name: 'stage', type: 'text', defaultValue: 'main' },
-    { name: 'order', type: 'number', defaultValue: 0 },
+    { name: 'sortOrder', type: 'number', defaultValue: 0 },
   ],
 }

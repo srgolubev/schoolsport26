@@ -17,6 +17,6 @@ export const Partners: CollectionConfig = {
       ],
       defaultValue: 'silver',
     },
-    { name: 'order', type: 'number', defaultValue: 0 },
+    { name: 'sortOrder', type: 'number', defaultValue: 0 },
   ],
 }

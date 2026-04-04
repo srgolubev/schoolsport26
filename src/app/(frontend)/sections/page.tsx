@@ -11,7 +11,7 @@ export default async function SectionsPage() {
   const payload = await getPayloadClient()
   const result = await payload.find({
     collection: 'sections',
-    sort: 'order',
+    sort: 'sortOrder',
     limit: 200,
     depth: 1,
   })
