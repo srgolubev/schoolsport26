@@ -1,6 +1,7 @@
 import "./globals.css"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import PageTransition from "@/components/PageTransition"
 import { getPayloadClient } from "@/lib/payload"
 
 export default async function FrontendLayout({ children }: { children: React.ReactNode }) {
@@ -10,7 +11,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
   return (
     <>
       <Header />
-      <main className="pt-16 md:pt-20">{children}</main>
+      <main className="pt-16 md:pt-20"><PageTransition>{children}</PageTransition></main>
       <Footer
         orgName={settings.footer?.org_name || undefined}
         orgDescription={settings.footer?.org_description || undefined}
