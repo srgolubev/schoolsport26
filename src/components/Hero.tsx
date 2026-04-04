@@ -136,23 +136,23 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         <Image src="/images/boy2.webp" alt="Участник" width={300} height={450} className="w-48 xl:w-64 2xl:w-80 h-auto" />
       </motion.div>
 
-      {/* Mobile characters — bottom of hero */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none flex justify-between items-end lg:hidden px-2">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
-        >
-          <Image src="/images/girl3.webp" alt="Участница" width={300} height={450} className="w-40 sm:w-48 h-auto" />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
-        >
-          <Image src="/images/boy2.webp" alt="Участник" width={300} height={450} className="w-40 sm:w-48 h-auto" />
-        </motion.div>
-      </div>
+      {/* Mobile characters — large, clipped at bottom/sides */}
+      <motion.div
+        className="absolute -bottom-16 -left-12 z-10 pointer-events-none lg:hidden"
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+      >
+        <Image src="/images/girl3.webp" alt="Участница" width={500} height={750} className="w-[240px] sm:w-[300px] h-auto" />
+      </motion.div>
+      <motion.div
+        className="absolute -bottom-16 -right-12 z-10 pointer-events-none lg:hidden"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
+      >
+        <Image src="/images/boy2.webp" alt="Участник" width={500} height={750} className="w-[240px] sm:w-[300px] h-auto" />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-16 pb-48 sm:pb-56 lg:py-20">
