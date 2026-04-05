@@ -39,7 +39,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
     <div>
       <div className="flex flex-wrap gap-2 justify-center mb-10">
         <motion.button
-          className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+          className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-colors ${
             !activeCategory ? "bg-primary-dark text-white" : "bg-white text-foreground hover:bg-primary-light/20"
           }`}
           onClick={() => setActiveCategory(null)}
@@ -50,7 +50,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
         {categories.map((cat) => (
           <motion.button
             key={cat}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+            className={`px-4 py-2.5 rounded-full text-sm font-semibold transition-colors ${
               activeCategory === cat ? "bg-primary-dark text-white" : "bg-white text-foreground hover:bg-primary-light/20"
             }`}
             onClick={() => setActiveCategory(cat)}
@@ -93,7 +93,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                         </div>
                       </div>
                       <div className="p-4">
-                        <div className="font-bold text-foreground">{section.title}</div>
+                        <div className="font-bold text-base text-foreground">{section.title}</div>
                         {section.time && <div className="text-xs text-muted mt-1">{section.time}</div>}
                       </div>
                     </>
@@ -112,7 +112,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                             <div className="inline-block bg-primary-light/20 rounded-full px-3 py-1 text-xs font-semibold text-primary-dark mb-2">
                               {categoryLabels[section.category] || section.category}
                             </div>
-                            <h3 className="text-xl md:text-2xl font-black text-foreground">{section.title}</h3>
+                            <h3 className="text-2xl md:text-3xl font-black text-foreground">{section.title}</h3>
                           </div>
                           <button
                             onClick={(e) => { e.stopPropagation(); setExpandedSlug(null) }}

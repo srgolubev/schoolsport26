@@ -161,7 +161,7 @@ export default function Header() {
                       handleNavClick(link.href)
                     }
                   }}
-                  className="block py-3 px-2 text-base font-medium text-foreground/70 hover:text-primary-dark border-b border-bg last:border-0"
+                  className="block py-3 px-2 text-base font-semibold text-foreground/80 hover:text-primary-dark border-b border-bg last:border-0"
                 >
                   {link.label}
                 </a>

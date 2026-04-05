@@ -157,14 +157,14 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
       {/* Content */}
       <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-24 pb-96 sm:pb-56 lg:py-20">
         <motion.div
-          className="text-xs font-semibold text-white/80 tracking-[2px] uppercase mb-3"
+          className="text-sm font-semibold text-white/90 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
         >
           {subtitle || "24 мая 2025 • Лужники"}
         </motion.div>
 
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-black leading-tight text-white mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black leading-tight text-white mb-4"
           custom={1} variants={fadeUp} initial="hidden" animate="visible"
         >
           {title || "Фестиваль школьного спорта!"}
@@ -184,7 +184,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         >
           {badges.map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm">
-              <Icon size={14} className="text-white" strokeWidth={2.5} />
+              <Icon size={16} className="text-white" strokeWidth={2.5} />
               <span className="text-sm font-semibold text-white">{label}</span>
             </div>
           ))}
@@ -228,10 +228,10 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
             { target: 12, label: "партнёров" },
           ].map((stat) => (
             <div key={stat.label} className="bg-white/15 backdrop-blur-sm px-5 py-3 rounded-xl text-center">
-              <div className="text-2xl font-black text-white">
+              <div className="text-3xl font-black text-white">
                 <AnimatedCounter target={stat.target} />
               </div>
-              <div className="text-xs text-white/70">{stat.label}</div>
+              <div className="text-sm text-white/80">{stat.label}</div>
             </div>
           ))}
         </motion.div>

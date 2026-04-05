@@ -61,7 +61,7 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
                       )}
                     </div>
                     <div className="p-4">
-                      <div className="font-bold text-sm text-foreground">{activity.title}</div>
+                      <div className="font-bold text-base text-foreground">{activity.title}</div>
                       {activity.age_range && (
                         <div className="text-xs text-muted mt-1">{activity.age_range}</div>
                       )}

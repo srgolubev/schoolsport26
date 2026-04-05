@@ -11,9 +11,9 @@ export default function Footer({ orgName, orgDescription, vkUrl, telegramUrl, we
     <footer className="py-10 bg-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
-          <div className="text-lg font-bold">{orgName || "МЦВП"}</div>
-          <div className="text-sm text-white/50 mt-1">{orgDescription || "Московский центр воспитательных практик"}</div>
-          <div className="text-xs text-white/30 mt-3">&copy; {new Date().getFullYear()} Все права защищены</div>
+          <div className="text-xl font-bold">{orgName || "МЦВП"}</div>
+          <div className="text-sm text-white/65 mt-1">{orgDescription || "Московский центр воспитательных практик"}</div>
+          <div className="text-xs text-white/50 mt-3">&copy; {new Date().getFullYear()} Все права защищены</div>
         </div>
         <div className="flex gap-3">
           {vkUrl && (

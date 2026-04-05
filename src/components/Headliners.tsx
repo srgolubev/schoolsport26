@@ -12,7 +12,7 @@ export default function Headliners({ bannerUrl }: HeadlinersProps) {
   return (
     <section className="py-16 md:py-24 bg-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Хедлайнеры" subtitle="Главная сцена фестиваля" className="[&_h2]:text-white [&_p]:text-white/60" />
+        <SectionHeader title="Хедлайнеры" subtitle="Главная сцена фестиваля" className="[&_h2]:text-white [&_p]:text-white/70" />
         {bannerUrl && (
           <motion.div
             className="rounded-2xl overflow-hidden"

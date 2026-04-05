@@ -46,9 +46,9 @@ export default function ScheduleTimeline({ items }: ScheduleTimelineProps) {
                 <div className={`text-xs font-bold ${i < items.length / 2 ? "text-primary-dark" : "text-accent"}`}>
                   {item.time}
                 </div>
-                <div className="text-sm text-foreground mt-1">{item.event_name}</div>
+                <div className="text-base font-semibold text-foreground mt-1">{item.event_name}</div>
                 {item.description && (
-                  <div className="text-xs text-muted mt-1">{item.description}</div>
+                  <div className="text-xs sm:text-sm text-muted mt-1">{item.description}</div>
                 )}
               </motion.div>
             </motion.div>
