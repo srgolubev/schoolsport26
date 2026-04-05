@@ -155,7 +155,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-6 pb-48 sm:pb-56 lg:py-20">
+      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-10 pb-48 sm:pb-56 lg:py-20">
         <motion.div
           className="text-xs font-semibold text-white/80 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
