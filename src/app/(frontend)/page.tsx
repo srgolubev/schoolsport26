@@ -11,7 +11,7 @@ export default async function HomePage() {
   const payload = await getPayloadClient()
 
   const [settings, activitiesResult, scheduleResult, partnersResult] = await Promise.all([
-    payload.findGlobal({ slug: 'site-settings' }),
+    payload.findGlobal({ slug: 'site-settings', depth: 1 }),
     payload.find({ collection: 'activities', sort: 'sortOrder', limit: 50, depth: 1 }),
     payload.find({ collection: 'schedule', sort: 'sortOrder', limit: 50 }),
     payload.find({ collection: 'partners', sort: 'sortOrder', limit: 50, depth: 1 }),
