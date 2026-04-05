@@ -50,7 +50,9 @@ src/
 │       ├── AnimatedCounter.tsx
 │       ├── FadeUp.tsx
 │       └── SectionHeader.tsx
-├── lib/payload.ts            # getPayloadClient() хелпер
+├── lib/
+│       ├── payload.ts            # getPayloadClient() хелпер
+│       └── mediaUrl.ts           # Ремап /api/media/file/ → /media/
 ├── seed/index.ts             # Legacy seed (не работает без Next.js)
 └── payload.config.ts         # Payload конфигурация
 ```
@@ -99,12 +101,17 @@ nohup npm run build > /tmp/build.log 2>&1 &  # ~4 мин, SSH разрывает
 pm2 restart schoolsport26
 ```
 
-### Build workarounds (на сервере)
-- `generateStaticParams` отключён → `export const dynamic = "force-dynamic"`
-- `@payloadcms/next/css` → `@ts-ignore` перед импортом
-- `serverFunction.ts` → тип `any` (несовместимость Payload версий)
+### Build workarounds (закоммичены в репо)
+- `@payloadcms/next/css` → `// @ts-ignore` перед импортом (route.ts, layout.tsx)
+- `serverFunction` → `as any` каст (layout.tsx в payload admin)
+- `NotFoundPage` → `as any` каст (not-found.tsx в payload admin)
 - `sitemap.ts` → `updatedAt as string`
 - Перед первым build нужна БД: запустить dev → засидить → остановить → build
+
+### Media URL
+- Payload генерирует URL как `/api/media/file/<name>`, но Next.js standalone раздаёт статику из `public/media/` по пути `/media/<name>`
+- Хелпер `mediaUrl()` из `src/lib/mediaUrl.ts` ремапит URL — использовать для всех media из Payload
+- `findGlobal` нужно вызывать с `depth: 1` для разворачивания upload-полей
 
 ## Важные особенности
 - Поле `sortOrder` (не `order` — зарезервировано в SQLite)

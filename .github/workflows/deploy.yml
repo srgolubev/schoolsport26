@@ -14,11 +14,11 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          script_stop: true
           command_timeout: 10m
           script: |
             cd /var/www/schoolsport26
             git pull
             npm install --production=false
+            pm2 delete schoolsport26 || true
             npm run build
-            pm2 restart schoolsport26
+            PORT=3002 pm2 start npm --name schoolsport26 -- start
