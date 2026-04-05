@@ -2,6 +2,7 @@ import { getPayloadClient } from "@/lib/payload"
 import Hero from "@/components/Hero"
 import FestivalDescription from "@/components/FestivalDescription"
 import ActivitiesCarousel from "@/components/ActivitiesCarousel"
+import SectionsPreview from "@/components/SectionsPreview"
 import Headliners from "@/components/Headliners"
 import ScheduleTimeline from "@/components/ScheduleTimeline"
 import PartnersGrid from "@/components/PartnersGrid"
@@ -16,7 +17,7 @@ export default async function HomePage() {
     payload.find({ collection: 'activities', sort: 'sortOrder', limit: 50, depth: 1 }),
     payload.find({ collection: 'schedule', sort: 'sortOrder', limit: 50 }),
     payload.find({ collection: 'partners', sort: 'sortOrder', limit: 50, depth: 1 }),
-    payload.find({ collection: 'sections', limit: 0 }),
+    payload.find({ collection: 'sections', sort: 'sortOrder', limit: 200, depth: 1 }),
   ])
 
   const activities = activitiesResult.docs.map((a) => ({
@@ -45,6 +46,28 @@ export default async function HomePage() {
     url: p.url || undefined,
   }))
 
+  const allSections = sectionsResult.docs.map((s) => ({
+    title: s.title,
+    slug: s.slug,
+    category: s.category,
+    time: s.time || undefined,
+    contentHtml: (s as unknown as Record<string, string>).contentHtml || undefined,
+    registration_url: s.registration_url || undefined,
+    images: Array.isArray(s.images)
+      ? s.images.map((img) => ({
+          url: mediaUrl(typeof img === 'object' && img !== null ? (img as { url?: string }).url : undefined),
+          alt: typeof img === 'object' && img !== null ? (img as { alt?: string }).alt : undefined,
+        }))
+      : [],
+  }))
+
+  const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5)
+  const withReg = allSections.filter((s) => s.registration_url)
+  const withoutReg = allSections.filter((s) => !s.registration_url)
+  const previewSections = withReg.length >= 3
+    ? shuffle(withReg).slice(0, 3)
+    : [...shuffle(withReg), ...shuffle(withoutReg).slice(0, 3 - withReg.length)]
+
   const bannerUrl = typeof settings.headliners_banner === 'object' && settings.headliners_banner !== null
     ? mediaUrl((settings.headliners_banner as { url?: string }).url)
     : undefined
@@ -65,6 +88,7 @@ export default async function HomePage() {
       />
       <FestivalDescription />
       <ActivitiesCarousel activities={activities} />
+      <SectionsPreview sections={previewSections} totalCount={sectionsResult.totalDocs} />
       <Headliners bannerUrl={bannerUrl} />
       <ScheduleTimeline items={schedule} />
       <PartnersGrid partners={partners} />
