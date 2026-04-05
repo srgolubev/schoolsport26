@@ -66,7 +66,7 @@ npm run seed         # Не работает напрямую — использ
 
 ## Админка
 - URL: http://localhost:3000/admin
-- Логин: admin@festival.ru / changeme123
+- Логин: admin@festival.ru / Yana2026
 
 ## Цветовая палитра
 ```
@@ -88,7 +88,7 @@ dark:         #1a1a1a
 - **Домен:** festival.schoolsportmos.ru (DNS нужно переключить на 95.163.234.54)
 - **SSL:** ожидает DNS
 - **Доступ по IP:** http://95.163.234.54
-- **Админка прод:** http://95.163.234.54/admin (admin@festival.ru / changeme123)
+- **Админка прод:** http://95.163.234.54/admin (admin@festival.ru / Yana2026)
 
 ### Деплой обновлений
 ```bash

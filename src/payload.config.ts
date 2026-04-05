@@ -42,7 +42,7 @@ export default buildConfig({
         collection: 'users',
         data: {
           email: 'admin@festival.ru',
-          password: 'changeme123',
+          password: 'Yana2026',
         },
       })
       payload.logger.info('Default admin user created: admin@festival.ru')
