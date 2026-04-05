@@ -3,5 +3,5 @@ import config from '@payload-config'
 import { importMap } from '../importMap'
 
 export default function NotFound() {
-  return NotFoundPage({ config, importMap })
+  return NotFoundPage({ config, importMap } as any)
 }
