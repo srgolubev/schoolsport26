@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Clock, X } from "lucide-react"
@@ -39,17 +39,13 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title="Соревнования" subtitle="Выбери своё направление и зарегистрируйся" />
 
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          <AnimatePresence mode="popLayout">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sections.map((section) => {
               const isExpanded = expandedSlug === section.slug
               return (
                 <motion.div
                   key={section.slug}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, layout: { type: "spring", stiffness: 300, damping: 30 } }}
                   className={isExpanded ? "sm:col-span-2 lg:col-span-3" : ""}
                 >
@@ -141,8 +137,7 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
                 </motion.div>
               )
             })}
-          </AnimatePresence>
-        </motion.div>
+        </div>
 
         <div className="mt-10 text-center">
           <Link
