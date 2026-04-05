@@ -88,13 +88,13 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                         {section.images?.[0] && (
                           <Image src={section.images[0].url} alt={section.images[0].alt || section.title} fill className="object-cover" />
                         )}
-                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-primary-dark">
+                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3.5 py-1.5 text-sm font-semibold text-primary-dark">
                           {categoryLabels[section.category] || section.category}
                         </div>
                       </div>
-                      <div className="p-4">
-                        <div className="font-bold text-base text-foreground">{section.title}</div>
-                        {section.time && <div className="text-xs text-muted mt-1">{section.time}</div>}
+                      <div className="p-5">
+                        <div className="font-bold text-lg text-foreground">{section.title}</div>
+                        {section.time && <div className="text-sm text-muted mt-1.5">{section.time}</div>}
                       </div>
                     </>
                   ) : (

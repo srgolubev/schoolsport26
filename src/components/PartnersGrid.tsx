@@ -26,7 +26,7 @@ export default function PartnersGrid({ partners }: PartnersGridProps) {
               href={partner.url || "#"}
               target={partner.url ? "_blank" : undefined}
               rel={partner.url ? "noopener noreferrer" : undefined}
-              className="bg-bg-white border border-[#f3f4f6] rounded-2xl p-6 flex items-center justify-center h-20 md:h-24"
+              className="bg-bg-white border border-[#f3f4f6] rounded-2xl p-6 flex items-center justify-center h-28 md:h-32"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -36,9 +36,9 @@ export default function PartnersGrid({ partners }: PartnersGridProps) {
               <Image
                 src={partner.logo.url}
                 alt={partner.logo.alt || partner.name}
-                width={120}
-                height={48}
-                className="max-h-12 w-auto object-contain"
+                width={180}
+                height={72}
+                className="max-h-16 md:max-h-20 w-auto object-contain"
               />
             </motion.a>
           ))}

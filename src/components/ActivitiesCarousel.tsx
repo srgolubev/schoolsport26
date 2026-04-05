@@ -39,7 +39,7 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
               {activities.map((activity, i) => (
                 <motion.div
                   key={activity.title}
-                  className="min-w-[240px] md:min-w-[280px] flex-shrink-0"
+                  className="min-w-[280px] md:min-w-[320px] flex-shrink-0"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -60,10 +60,10 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
                         />
                       )}
                     </div>
-                    <div className="p-4">
-                      <div className="font-bold text-base text-foreground">{activity.title}</div>
+                    <div className="p-5">
+                      <div className="font-bold text-lg text-foreground">{activity.title}</div>
                       {activity.age_range && (
-                        <div className="text-xs text-muted mt-1">{activity.age_range}</div>
+                        <div className="text-sm text-muted mt-1.5">{activity.age_range}</div>
                       )}
                     </div>
                   </motion.div>

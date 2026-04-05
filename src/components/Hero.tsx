@@ -164,7 +164,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         </motion.div>
 
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black leading-tight text-white mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-white mb-4"
           custom={1} variants={fadeUp} initial="hidden" animate="visible"
         >
           {title || "Фестиваль школьного спорта!"}
@@ -183,9 +183,9 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
           custom={3} variants={fadeUp} initial="hidden" animate="visible"
         >
           {badges.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm">
-              <Icon size={16} className="text-white" strokeWidth={2.5} />
-              <span className="text-sm font-semibold text-white">{label}</span>
+            <div key={label} className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/15 backdrop-blur-sm">
+              <Icon size={18} className="text-white" strokeWidth={2.5} />
+              <span className="text-base font-semibold text-white">{label}</span>
             </div>
           ))}
         </motion.div>
@@ -199,7 +199,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
             href={ctaUrl || "https://gorizonty.mos.ru/events/18948"}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-bold bg-accent cursor-pointer"
+            className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg text-white font-bold bg-accent cursor-pointer"
             style={{ boxShadow: "0 6px 24px rgba(249,115,22,0.4)" }}
             whileHover={{ scale: 1.05, boxShadow: "0 10px 32px rgba(249,115,22,0.5)" }}
             whileTap={{ scale: 0.97 }}
@@ -209,7 +209,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
           </motion.a>
           <motion.a
             href="/sections"
-            className="inline-flex items-center px-8 py-3.5 rounded-full text-white font-semibold bg-white/20 backdrop-blur-sm cursor-pointer"
+            className="inline-flex items-center px-10 py-4 rounded-full text-lg text-white font-semibold bg-white/20 backdrop-blur-sm cursor-pointer"
             whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.3)" }}
             whileTap={{ scale: 0.97 }}
           >
@@ -227,11 +227,11 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
             { target: 14, label: "активностей" },
             { target: 12, label: "партнёров" },
           ].map((stat) => (
-            <div key={stat.label} className="bg-white/15 backdrop-blur-sm px-5 py-3 rounded-xl text-center">
-              <div className="text-3xl font-black text-white">
+            <div key={stat.label} className="bg-white/15 backdrop-blur-sm px-6 py-4 rounded-xl text-center">
+              <div className="text-3xl font-bold text-white">
                 <AnimatedCounter target={stat.target} />
               </div>
-              <div className="text-sm text-white/80">{stat.label}</div>
+              <div className="text-base text-white/85">{stat.label}</div>
             </div>
           ))}
         </motion.div>

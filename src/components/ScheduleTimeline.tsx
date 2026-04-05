@@ -43,10 +43,10 @@ export default function ScheduleTimeline({ items }: ScheduleTimelineProps) {
                 whileHover={{ y: -2, boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                <div className={`text-xs font-bold ${i < items.length / 2 ? "text-primary-dark" : "text-accent"}`}>
+                <div className={`text-sm font-bold ${i < items.length / 2 ? "text-primary-dark" : "text-accent"}`}>
                   {item.time}
                 </div>
-                <div className="text-base font-semibold text-foreground mt-1">{item.event_name}</div>
+                <div className="text-lg font-semibold text-foreground mt-1">{item.event_name}</div>
                 {item.description && (
                   <div className="text-xs sm:text-sm text-muted mt-1">{item.description}</div>
                 )}

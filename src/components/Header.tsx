@@ -78,8 +78,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-primary-dark rounded-lg flex items-center justify-center text-white font-black text-sm">Ф</div>
-            <span className="font-bold text-foreground text-sm hidden sm:block">Фестиваль спорта</span>
+            <div className="w-10 h-10 bg-primary-dark rounded-lg flex items-center justify-center text-white font-black text-base">Ф</div>
+            <span className="font-bold text-foreground text-base hidden sm:block">Фестиваль спорта</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -95,7 +95,7 @@ export default function Header() {
                     handleNavClick(link.href)
                   }
                 }}
-                className={`relative text-sm font-medium transition-colors duration-200 ${
+                className={`relative text-base font-semibold transition-colors duration-200 ${
                   activeSection === link.href
                     ? "text-primary-dark"
                     : "text-foreground/70 hover:text-primary-dark"
@@ -119,7 +119,7 @@ export default function Header() {
               href="https://gorizonty.mos.ru/events/18948"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-accent cursor-pointer"
+              className="hidden md:inline-flex items-center px-7 py-3 rounded-full text-base font-bold text-white bg-accent cursor-pointer"
               style={{ boxShadow: "0 4px 16px rgba(249,115,22,0.3)" }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
