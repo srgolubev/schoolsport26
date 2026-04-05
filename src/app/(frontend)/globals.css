@@ -19,6 +19,11 @@
   --color-foreground: #1a1a1a;
   --color-muted: #6B7280;
   --color-dark: #1a1a1a;
+
+  /* Body text sizes +2px (xs/sm/base). Headings (2xl+) unchanged. */
+  --text-xs: 0.875rem;   /* 14px, was 12px */
+  --text-sm: 1rem;       /* 16px, was 14px */
+  --text-base: 1.125rem; /* 18px, was 16px */
 }
 
 :root {
