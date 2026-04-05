@@ -78,6 +78,34 @@ muted:        #6B7280
 dark:         #1a1a1a
 ```
 
+## Production деплой
+- **Сервер:** 95.163.234.54 (Ubuntu 20.04, Reg.ru CloudVPS)
+- **Путь:** `/var/www/schoolsport26`
+- **Процесс:** pm2 `schoolsport26`, порт 3002
+- **Nginx:** reverse proxy festival.schoolsportmos.ru + IP → localhost:3002
+- **Домен:** festival.schoolsportmos.ru (DNS нужно переключить на 95.163.234.54)
+- **SSL:** ожидает DNS
+- **Доступ по IP:** http://95.163.234.54
+- **Админка прод:** http://95.163.234.54/admin (admin@festival.ru / changeme123)
+
+### Деплой обновлений
+```bash
+ssh root@95.163.234.54
+cd /var/www/schoolsport26
+git pull
+npm install
+nohup npm run build > /tmp/build.log 2>&1 &  # ~4 мин, SSH разрывается
+# дождаться: tail -f /tmp/build.log
+pm2 restart schoolsport26
+```
+
+### Build workarounds (на сервере)
+- `generateStaticParams` отключён → `export const dynamic = "force-dynamic"`
+- `@payloadcms/next/css` → `@ts-ignore` перед импортом
+- `serverFunction.ts` → тип `any` (несовместимость Payload версий)
+- `sitemap.ts` → `updatedAt as string`
+- Перед первым build нужна БД: запустить dev → засидить → остановить → build
+
 ## Важные особенности
 - Поле `sortOrder` (не `order` — зарезервировано в SQLite)
 - Поле `contentHtml` (textarea) для legacy HTML из JSON
@@ -85,3 +113,4 @@ dark:         #1a1a1a
 - Seed только через API route POST /api/seed (Payload требует Next.js контекст)
 - webpack watchOptions игнорирует public/media и *.db
 - Логотип: `/images/logo/mosobr.png` (Московское образование)
+- На сервере также запущен edurun (pm2) — не трогать
