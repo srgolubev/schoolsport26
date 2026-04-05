@@ -5,7 +5,6 @@ export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
     staticDir: path.resolve(process.cwd(), 'public/media'),
-    staticURL: '/media',
     mimeTypes: ['image/*'],
     imageSizes: [
       { name: 'thumbnail', width: 200, height: undefined, position: 'centre' },

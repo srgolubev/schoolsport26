@@ -1,5 +1,6 @@
 import { getPayloadClient } from "@/lib/payload"
 import SectionsFilter from "@/components/SectionsFilter"
+import { mediaUrl } from "@/lib/mediaUrl"
 import SectionHeader from "@/components/ui/SectionHeader"
 
 export const metadata = {
@@ -25,7 +26,7 @@ export default async function SectionsPage() {
     registration_url: s.registration_url || undefined,
     images: Array.isArray(s.images)
       ? s.images.map((img) => ({
-          url: typeof img === 'object' && img !== null ? (img as { url?: string }).url || '' : '',
+          url: mediaUrl(typeof img === 'object' && img !== null ? (img as { url?: string }).url : undefined),
           alt: typeof img === 'object' && img !== null ? (img as { alt?: string }).alt : undefined,
         }))
       : [],

@@ -6,6 +6,7 @@ import Headliners from "@/components/Headliners"
 import ScheduleTimeline from "@/components/ScheduleTimeline"
 import PartnersGrid from "@/components/PartnersGrid"
 import YandexMap from "@/components/YandexMap"
+import { mediaUrl } from "@/lib/mediaUrl"
 
 export default async function HomePage() {
   const payload = await getPayloadClient()
@@ -22,7 +23,7 @@ export default async function HomePage() {
     age_range: a.age_range || undefined,
     images: Array.isArray(a.images)
       ? a.images.map((img) => ({
-          url: typeof img === 'object' && img !== null ? (img as { url?: string }).url || '' : '',
+          url: mediaUrl(typeof img === 'object' && img !== null ? (img as { url?: string }).url : undefined),
           alt: typeof img === 'object' && img !== null ? (img as { alt?: string }).alt : undefined,
         }))
       : [],
@@ -37,14 +38,14 @@ export default async function HomePage() {
   const partners = partnersResult.docs.map((p) => ({
     name: p.name,
     logo: {
-      url: typeof p.logo === 'object' && p.logo !== null ? (p.logo as { url?: string }).url || '' : '',
+      url: mediaUrl(typeof p.logo === 'object' && p.logo !== null ? (p.logo as { url?: string }).url : undefined),
       alt: typeof p.logo === 'object' && p.logo !== null ? (p.logo as { alt?: string }).alt : undefined,
     },
     url: p.url || undefined,
   }))
 
   const bannerUrl = typeof settings.headliners_banner === 'object' && settings.headliners_banner !== null
-    ? (settings.headliners_banner as { url?: string }).url
+    ? mediaUrl((settings.headliners_banner as { url?: string }).url)
     : undefined
 
   return (

@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react"
 import FadeUp from "@/components/ui/FadeUp"
+import { mediaUrl } from "@/lib/mediaUrl"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -43,7 +44,7 @@ export default async function SectionPage({ params }: PageProps) {
   const images = Array.isArray(section.images)
     ? section.images
         .filter((img): img is Record<string, unknown> => typeof img === 'object' && img !== null)
-        .map((img) => ({ url: (img.url as string) || '', alt: (img.alt as string) || section.title }))
+        .map((img) => ({ url: mediaUrl(img.url as string | undefined), alt: (img.alt as string) || section.title }))
     : []
 
   return (
