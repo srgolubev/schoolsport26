@@ -218,7 +218,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
             whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.3)" }}
             whileTap={{ scale: 0.97 }}
           >
-            Смотреть секции
+            Смотреть соревнования
           </motion.a>
         </motion.div>
 
@@ -228,7 +228,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
           custom={5} variants={fadeUp} initial="hidden" animate="visible"
         >
           {[
-            { target: stats?.sections ?? 0, label: "секций" },
+            { target: stats?.sections ?? 0, label: "соревнований" },
             { target: stats?.activities ?? 0, label: "активностей" },
             { target: stats?.partners ?? 0, label: "партнёров" },
           ].map((stat) => (

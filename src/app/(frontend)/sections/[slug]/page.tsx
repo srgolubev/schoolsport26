@@ -52,7 +52,7 @@ export default async function SectionPage({ params }: PageProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <FadeUp>
           <Link href="/sections" className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary-dark transition-colors mb-8">
-            <ArrowLeft size={16} /> Все секции
+            <ArrowLeft size={16} /> Все соревнования
           </Link>
         </FadeUp>
 

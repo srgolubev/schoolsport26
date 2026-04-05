@@ -37,7 +37,7 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
   return (
     <section id="sections-preview" className="py-16 md:py-24 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Секции фестиваля" subtitle="Выбери своё направление и зарегистрируйся" />
+        <SectionHeader title="Соревнования" subtitle="Выбери своё направление и зарегистрируйся" />
 
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
@@ -62,7 +62,7 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
                   >
                     {!isExpanded ? (
                       <>
-                        <div className="h-36 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
+                        <div className="h-72 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                           {section.images?.[0] && (
                             <Image src={section.images[0].url} alt={section.images[0].alt || section.title} fill className="object-cover" />
                           )}
@@ -150,7 +150,7 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white bg-primary hover:bg-primary-dark transition-colors"
             style={{ boxShadow: "0 4px 16px rgba(16,185,129,0.3)" }}
           >
-            Все {totalCount} секций <ArrowRight size={18} />
+            Все {totalCount} соревнований <ArrowRight size={18} />
           </Link>
         </div>
       </div>
