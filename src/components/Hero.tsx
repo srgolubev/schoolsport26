@@ -38,9 +38,14 @@ interface HeroProps {
   description?: string
   ctaUrl?: string
   ctaText?: string
+  stats?: {
+    sections: number
+    activities: number
+    partners: number
+  }
 }
 
-export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: HeroProps) {
+export default function Hero({ title, subtitle, description, ctaUrl, ctaText, stats }: HeroProps) {
   const badges = parseBadges(subtitle)
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
@@ -223,9 +228,9 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
           custom={5} variants={fadeUp} initial="hidden" animate="visible"
         >
           {[
-            { target: 96, label: "секций" },
-            { target: 14, label: "активностей" },
-            { target: 12, label: "партнёров" },
+            { target: stats?.sections ?? 0, label: "секций" },
+            { target: stats?.activities ?? 0, label: "активностей" },
+            { target: stats?.partners ?? 0, label: "партнёров" },
           ].map((stat) => (
             <div key={stat.label} className="bg-white/15 backdrop-blur-sm px-6 py-4 rounded-xl text-center">
               <div className="text-3xl font-bold text-white">
