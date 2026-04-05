@@ -138,7 +138,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
 
       {/* Mobile characters — large, clipped at bottom/sides */}
       <motion.div
-        className="absolute bottom-24 -left-12 z-10 pointer-events-none lg:hidden"
+        className="absolute bottom-0 -left-8 z-10 pointer-events-none lg:hidden"
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
@@ -146,7 +146,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
         <Image src="/images/girl3.webp" alt="Участница" width={500} height={750} className="w-[240px] sm:w-[300px] h-auto" />
       </motion.div>
       <motion.div
-        className="absolute bottom-24 -right-12 z-10 pointer-events-none lg:hidden"
+        className="absolute bottom-0 -right-8 z-10 pointer-events-none lg:hidden"
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
@@ -155,7 +155,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText }: 
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-10 pb-48 sm:pb-56 lg:py-20">
+      <div className="relative z-20 max-w-3xl 2xl:max-w-4xl mx-auto px-5 sm:px-8 text-center pt-24 pb-96 sm:pb-56 lg:py-20">
         <motion.div
           className="text-xs font-semibold text-white/80 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
