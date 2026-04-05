@@ -11,11 +11,12 @@ import { mediaUrl } from "@/lib/mediaUrl"
 export default async function HomePage() {
   const payload = await getPayloadClient()
 
-  const [settings, activitiesResult, scheduleResult, partnersResult] = await Promise.all([
+  const [settings, activitiesResult, scheduleResult, partnersResult, sectionsResult] = await Promise.all([
     payload.findGlobal({ slug: 'site-settings', depth: 1 }),
     payload.find({ collection: 'activities', sort: 'sortOrder', limit: 50, depth: 1 }),
     payload.find({ collection: 'schedule', sort: 'sortOrder', limit: 50 }),
     payload.find({ collection: 'partners', sort: 'sortOrder', limit: 50, depth: 1 }),
+    payload.find({ collection: 'sections', limit: 0 }),
   ])
 
   const activities = activitiesResult.docs.map((a) => ({
@@ -56,6 +57,11 @@ export default async function HomePage() {
         description={settings.hero?.description || undefined}
         ctaUrl={settings.hero?.cta_url || undefined}
         ctaText={settings.hero?.cta_text || undefined}
+        stats={{
+          sections: sectionsResult.totalDocs,
+          activities: activitiesResult.totalDocs,
+          partners: partnersResult.totalDocs,
+        }}
       />
       <FestivalDescription />
       <ActivitiesCarousel activities={activities} />
