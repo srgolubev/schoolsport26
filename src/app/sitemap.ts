@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const sectionUrls = sections.docs.map((s) => ({
     url: `${SITE_URL}/sections/${s.slug}`,
-    lastModified: s.updatedAt,
+    lastModified: s.updatedAt as string,
   }))
 
   return [

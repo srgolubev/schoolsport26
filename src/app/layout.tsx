@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import React from 'react'
+// @ts-ignore
 import '@payloadcms/next/css'
 
 export const metadata: Metadata = {
