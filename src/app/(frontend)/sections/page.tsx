@@ -4,7 +4,7 @@ import { mediaUrl } from "@/lib/mediaUrl"
 import SectionHeader from "@/components/ui/SectionHeader"
 
 export const metadata = {
-  title: "Секции — Фестиваль школьного спорта 2025",
+  title: "Соревнования — Фестиваль школьного спорта 2025",
   description: "Каталог всех секций фестиваля: соревнования, мастер-классы, семейные активности и многое другое.",
 }
 
@@ -35,7 +35,7 @@ export default async function SectionsPage() {
   return (
     <div className="py-24 md:py-32 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Секции фестиваля" subtitle={`${sections.length} секций`} />
+        <SectionHeader title="Соревнования" subtitle={`${sections.length} направлений`} />
         <SectionsFilter sections={sections} />
       </div>
     </div>

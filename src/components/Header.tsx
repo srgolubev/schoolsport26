@@ -10,7 +10,7 @@ const navLinks = [
   { label: "О фестивале", href: "#about" },
   { label: "Активности", href: "#activities" },
   { label: "Расписание", href: "#schedule" },
-  { label: "Секции", href: "/sections", isPage: true },
+  { label: "Соревнования", href: "/sections", isPage: true },
   { label: "Партнёры", href: "#partners" },
   { label: "Как добраться", href: "#map" },
 ]

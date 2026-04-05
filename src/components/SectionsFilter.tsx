@@ -84,7 +84,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                 >
                   {!isExpanded ? (
                     <>
-                      <div className="h-36 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
+                      <div className="h-72 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                         {section.images?.[0] && (
                           <Image src={section.images[0].url} alt={section.images[0].alt || section.title} fill className="object-cover" />
                         )}
