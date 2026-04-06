@@ -18,6 +18,9 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      beforeDashboard: ['@/components/admin/RevalidateButton'],
+    },
   },
   collections: [Users, Media, Sections, Activities, Partners, Schedule],
   globals: [SiteSettings],
