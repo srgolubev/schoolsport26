@@ -39,7 +39,7 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
               {activities.map((activity, i) => (
                 <motion.div
                   key={activity.title}
-                  className="min-w-[280px] md:min-w-[320px] flex-shrink-0"
+                  className="min-w-[300px] md:min-w-[370px] flex-shrink-0"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -50,7 +50,7 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
                     whileHover={{ y: -6, boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}
                     transition={{ type: "spring", stiffness: 350, damping: 25 }}
                   >
-                    <div className="h-40 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
+                    <div className="h-72 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                       {activity.images?.[0] && (
                         <Image
                           src={activity.images[0].url}
