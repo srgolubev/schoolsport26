@@ -19,6 +19,13 @@ jobs:
             cd /var/www/schoolsport26
             git pull
             npm install --production=false
-            pm2 delete schoolsport26 || true
+
+            # Копируем 502-страницу в nginx (если ещё нет)
+            cp -f nginx/502.html /var/www/502.html 2>/dev/null || true
+
+            # Билд ДО остановки — старый сайт работает пока идёт сборка
             npm run build
+
+            # Быстрый перезапуск (~2 сек даунтайма вместо ~4 мин)
+            pm2 delete schoolsport26 || true
             PORT=3002 pm2 start npm --name schoolsport26 -- start
