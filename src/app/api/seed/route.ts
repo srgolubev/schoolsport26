@@ -4,8 +4,8 @@ import fs from 'fs'
 import path from 'path'
 import { NextResponse } from 'next/server'
 
-const PROJECT_ROOT = process.cwd()
-const DATA_DIR = path.join(PROJECT_ROOT, 'data')
+const PROJECT_ROOT = /* turbopackIgnore: true */ process.cwd()
+const DATA_DIR = path.join(/* turbopackIgnore: true */ PROJECT_ROOT, 'data')
 
 const categoryMap: Record<string, string> = {
   'Соревнования': 'competitions',
