@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getPayloadClient } from '@/lib/payload'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://festival.example.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://festival.schoolsportmos.ru'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload = await getPayloadClient()

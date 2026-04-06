@@ -54,7 +54,13 @@ async function uploadImage(payload: Awaited<ReturnType<typeof getPayload>>, file
   }
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+  if (process.env.NODE_ENV === 'production') {
+    const authHeader = request.headers.get('x-seed-secret')
+    if (!authHeader || authHeader !== process.env.SEED_SECRET) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+  }
   try {
     const payload = await getPayload({ config })
     const log: string[] = []

@@ -5,7 +5,21 @@ import '@payloadcms/next/css'
 
 export const metadata: Metadata = {
   title: 'Фестиваль школьного спорта 2025',
-  description: 'Официальный сайт Фестиваля школьного спорта 2025',
+  description: 'Официальный сайт Фестиваля школьного спорта 2025 — соревнования, мастер-классы, активные зоны для детей и всей семьи',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://festival.schoolsportmos.ru'),
+  openGraph: {
+    title: 'Фестиваль школьного спорта 2025',
+    description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
+    type: 'website',
+    locale: 'ru_RU',
+    images: [{ url: '/images/head_banner.jpg', width: 1200, height: 630, alt: 'Фестиваль школьного спорта' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Фестиваль школьного спорта 2025',
+    description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
+    images: ['/images/head_banner.jpg'],
+  },
 }
 
 export const viewport: Viewport = {

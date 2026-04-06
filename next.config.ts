@@ -4,7 +4,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
   },
   webpack: (config, { isServer }) => {
     // Ignore media uploads and DB files from triggering recompilation

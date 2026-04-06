@@ -22,7 +22,11 @@ export default buildConfig({
   collections: [Users, Media, Sections, Activities, Partners, Schedule],
   globals: [SiteSettings],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || 'fallback-secret-do-not-use-in-production',
+  secret: (() => {
+    const s = process.env.PAYLOAD_SECRET
+    if (!s) throw new Error('PAYLOAD_SECRET env variable is required')
+    return s
+  })(),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
@@ -42,7 +46,7 @@ export default buildConfig({
         collection: 'users',
         data: {
           email: 'admin@festival.ru',
-          password: 'changeme123',
+          password: process.env.PAYLOAD_INITIAL_PASSWORD || 'changeme123',
         },
       })
       payload.logger.info('Default admin user created: admin@festival.ru')

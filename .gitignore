@@ -13,7 +13,11 @@ database.db-shm
 database.db-wal
 media/
 
+# Scripts with secrets
+DLImg.py
+
 # Environment
+.env
 .env.local
 .env.production
 
