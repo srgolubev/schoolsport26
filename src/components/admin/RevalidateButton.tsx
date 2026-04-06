@@ -37,7 +37,7 @@ const RevalidateButton: React.FC = () => {
   }
 
   return (
-    <div style={{ marginBottom: '24px' }}>
+    <div style={{ padding: '12px 16px' }}>
       <button
         onClick={handleRevalidate}
         disabled={status === 'loading'}
@@ -45,9 +45,9 @@ const RevalidateButton: React.FC = () => {
           backgroundColor: colors[status],
           color: 'white',
           border: 'none',
-          borderRadius: '8px',
-          padding: '12px 24px',
-          fontSize: '15px',
+          borderRadius: '6px',
+          padding: '8px 12px',
+          fontSize: '13px',
           fontWeight: 600,
           cursor: status === 'loading' ? 'wait' : 'pointer',
           width: '100%',

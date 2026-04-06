@@ -20,6 +20,7 @@ export default buildConfig({
     user: Users.slug,
     components: {
       beforeDashboard: ['@/components/admin/RevalidateButton'],
+      afterNavLinks: ['@/components/admin/RevalidateButton'],
     },
   },
   collections: [Users, Media, Sections, Activities, Partners, Schedule],
