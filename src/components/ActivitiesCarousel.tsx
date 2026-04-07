@@ -50,13 +50,13 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
                     whileHover={{ y: -6, boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}
                     transition={{ type: "spring", stiffness: 350, damping: 25 }}
                   >
-                    <div className="h-40 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
+                    <div className="h-80 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                       {activity.images?.[0] && (
                         <Image
                           src={activity.images[0].url}
                           alt={activity.images[0].alt || activity.title}
                           fill
-                          className="object-cover"
+                          className="object-cover object-top"
                         />
                       )}
                     </div>
