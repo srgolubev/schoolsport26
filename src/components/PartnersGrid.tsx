@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import SectionHeader from "./ui/SectionHeader"
+import { mediaUrl } from "@/lib/mediaUrl"
 
 interface Partner {
   name: string
@@ -34,7 +35,7 @@ export default function PartnersGrid({ partners }: PartnersGridProps) {
               whileHover={{ scale: 1.05, boxShadow: "0 4px 16px rgba(0,0,0,0.08)" }}
             >
               <Image
-                src={partner.logo.url}
+                src={mediaUrl(partner.logo.url)}
                 alt={partner.logo.alt || partner.name}
                 width={180}
                 height={72}

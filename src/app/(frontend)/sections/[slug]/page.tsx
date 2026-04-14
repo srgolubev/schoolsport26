@@ -74,7 +74,7 @@ export default async function SectionPage({ params }: PageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
               {images.map((img, i) => (
                 <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] relative">
-                  <Image src={img.url} alt={img.alt} fill className="object-cover" />
+                  <Image src={mediaUrl(img.url)} alt={img.alt} fill className="object-cover" />
                 </div>
               ))}
             </div>

@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import SectionHeader from "./ui/SectionHeader"
+import { mediaUrl } from "@/lib/mediaUrl"
 
 interface Activity {
   title: string
@@ -53,7 +54,7 @@ export default function ActivitiesCarousel({ activities }: ActivitiesCarouselPro
                     <div className="h-80 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                       {activity.images?.[0] && (
                         <Image
-                          src={activity.images[0].url}
+                          src={mediaUrl(activity.images[0].url)}
                           alt={activity.images[0].alt || activity.title}
                           fill
                           className="object-cover object-top"

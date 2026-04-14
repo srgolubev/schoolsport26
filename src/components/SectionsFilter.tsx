@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { ArrowRight, Clock, X } from "lucide-react"
+import { mediaUrl } from "@/lib/mediaUrl"
 
 interface Section {
   title: string
@@ -86,7 +87,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                     <>
                       <div className="h-72 bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden">
                         {section.images?.[0] && (
-                          <Image src={section.images[0].url} alt={section.images[0].alt || section.title} fill className="object-cover" />
+                          <Image src={mediaUrl(section.images[0].url)} alt={section.images[0].alt || section.title} fill className="object-cover" />
                         )}
                         <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-full px-3.5 py-1.5 text-sm font-semibold text-primary-dark">
                           {categoryLabels[section.category] || section.category}
@@ -102,7 +103,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                       {/* Image side */}
                       <div className="md:w-1/3 h-48 md:h-auto bg-gradient-to-br from-primary-light/20 to-primary/10 relative overflow-hidden flex-shrink-0">
                         {section.images?.[0] && (
-                          <Image src={section.images[0].url} alt={section.images[0].alt || section.title} fill className="object-cover" />
+                          <Image src={mediaUrl(section.images[0].url)} alt={section.images[0].alt || section.title} fill className="object-cover" />
                         )}
                       </div>
                       {/* Content side */}
@@ -141,7 +142,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                           <div className="flex gap-2 mb-6 overflow-x-auto">
                             {section.images.slice(1, 5).map((img, i) => (
                               <div key={i} className="w-24 h-24 rounded-xl overflow-hidden relative flex-shrink-0">
-                                <Image src={img.url} alt={img.alt || section.title} fill className="object-cover" />
+                                <Image src={mediaUrl(img.url)} alt={img.alt || section.title} fill className="object-cover" />
                               </div>
                             ))}
                           </div>
