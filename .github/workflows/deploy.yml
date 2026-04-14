@@ -21,5 +21,7 @@ jobs:
             git reset --hard origin/main
             npm install --production=false
             npm run build
+            rm -rf .next/standalone/public/media
+            ln -s /var/www/schoolsport26/public/media .next/standalone/public/media
             pm2 delete schoolsport26 || true
             PORT=3002 pm2 start npm --name schoolsport26 -- start
