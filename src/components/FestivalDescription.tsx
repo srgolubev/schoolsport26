@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
-import { Star, Music, Trophy, ArrowRight, Quote } from "lucide-react"
+import { Trophy, ArrowRight, Quote } from "lucide-react"
 import { useRef, useState } from "react"
 import SectionHeader from "./ui/SectionHeader"
 import FadeUp from "./ui/FadeUp"
@@ -23,12 +23,6 @@ interface FestivalDescriptionProps {
   finalHook?: string
   ctaUrl?: string
   ctaText?: string
-}
-
-const ICON_MAP = {
-  star: Star,
-  music: Music,
-  trophy: Trophy,
 }
 
 // Each feature card gets a full editorial identity
@@ -97,7 +91,6 @@ function FeatureCard({
   index: number
 }) {
   const style = FEATURE_STYLES[index % FEATURE_STYLES.length]
-  const Icon = ICON_MAP[feat.icon] ?? Star
   const cardRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
@@ -196,29 +189,18 @@ function FeatureCard({
       {/* Card content — lifted in z so it floats over decorations */}
       <div className="relative z-10 p-7 md:p-8 flex flex-col min-h-[240px] md:min-h-[280px]">
 
-        {/* Icon with glow halo */}
-        <motion.div
-          className="mb-6 w-16 h-16 rounded-2xl flex items-center justify-center relative"
-          animate={isHovered ? { scale: 1.12, rotate: 8 } : { scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 280, damping: 20 }}
-          style={{
-            background: `radial-gradient(circle at 30% 30%, ${style.iconRingFrom}22, ${style.iconRingTo}11)`,
-            boxShadow: isHovered
-              ? `0 0 0 1px ${style.iconRingFrom}55, 0 0 28px ${style.glowColor}`
-              : `0 0 0 1px ${style.iconRingFrom}33, 0 0 12px ${style.glowColor}66`,
-          }}
+        {/* Eyebrow accent label */}
+        <div
+          className="mb-5 inline-flex w-fit items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em]"
+          style={{ color: style.stripeColor }}
         >
-          <Icon
-            size={32}
-            strokeWidth={1.75}
-            aria-hidden
-            style={{ color: style.iconColor }}
-          />
-        </motion.div>
+          <span className="h-px w-6" style={{ background: style.stripeColor }} aria-hidden />
+          {style.label}
+        </div>
 
         {/* Title */}
         <h3
-          className="text-2xl md:text-3xl font-extrabold leading-tight text-white mb-3"
+          className="text-3xl md:text-4xl font-extrabold leading-tight text-white mb-3"
           style={{ textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
         >
           {feat.title}
