@@ -1,7 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
 import { Star, Music, Trophy, ArrowRight, Quote } from "lucide-react"
+import { useRef, useState } from "react"
 import SectionHeader from "./ui/SectionHeader"
 import FadeUp from "./ui/FadeUp"
 
@@ -30,25 +31,40 @@ const ICON_MAP = {
   trophy: Trophy,
 }
 
-// Each feature card gets a visual identity: accent (orange), primary (green), primary-light
+// Each feature card gets a full editorial identity
 const FEATURE_STYLES = [
   {
-    iconBg: "bg-accent/10 border-accent/25",
-    iconColor: "text-accent",
-    border: "border-accent/20",
-    badge: "bg-accent/10 text-accent",
+    // Card 1 — Stars: deep orange-to-crimson
+    gradient: "linear-gradient(145deg, #1a0a00 0%, #3d1500 45%, #7c2d12 100%)",
+    stripeColor: "#f97316",
+    glowColor: "rgba(249,115,22,0.55)",
+    ghostColor: "rgba(249,115,22,0.07)",
+    iconRingFrom: "#f97316",
+    iconRingTo: "#fb923c",
+    iconColor: "#f97316",
+    label: "01",
   },
   {
-    iconBg: "bg-primary/10 border-primary/25",
-    iconColor: "text-primary",
-    border: "border-primary/20",
-    badge: "bg-primary/10 text-primary",
+    // Card 2 — Music: deep emerald-to-teal
+    gradient: "linear-gradient(145deg, #001a0e 0%, #003d21 45%, #065f46 100%)",
+    stripeColor: "#10b981",
+    glowColor: "rgba(16,185,129,0.55)",
+    ghostColor: "rgba(16,185,129,0.07)",
+    iconRingFrom: "#10b981",
+    iconRingTo: "#34d399",
+    iconColor: "#10b981",
+    label: "02",
   },
   {
-    iconBg: "bg-primary-light/15 border-primary-light/30",
-    iconColor: "text-primary-dark",
-    border: "border-primary-light/25",
-    badge: "bg-primary-light/15 text-primary-dark",
+    // Card 3 — Activities: deep indigo-to-emerald
+    gradient: "linear-gradient(145deg, #050d1a 0%, #0c1f3d 45%, #134e4a 100%)",
+    stripeColor: "#34d399",
+    glowColor: "rgba(52,211,153,0.55)",
+    ghostColor: "rgba(52,211,153,0.07)",
+    iconRingFrom: "#34d399",
+    iconRingTo: "#10b981",
+    iconColor: "#34d399",
+    label: "03",
   },
 ]
 
@@ -57,18 +73,180 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.15,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
+}
+
+// Individual tilt card component — isolates motion values per card
+function FeatureCard({
+  feat,
+  index,
+}: {
+  feat: FestivalFeature
+  index: number
+}) {
+  const style = FEATURE_STYLES[index % FEATURE_STYLES.length]
+  const Icon = ICON_MAP[feat.icon] ?? Star
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+
+  // Raw pointer position relative to card center
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+
+  // Spring-smoothed tilt values
+  const springConfig = { stiffness: 200, damping: 30, mass: 0.5 }
+  const rotateX = useSpring(useTransform(rawY, [-0.5, 0.5], [6, -6]), springConfig)
+  const rotateY = useSpring(useTransform(rawX, [-0.5, 0.5], [-6, 6]), springConfig)
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const nx = (e.clientX - rect.left) / rect.width - 0.5
+    const ny = (e.clientY - rect.top) / rect.height - 0.5
+    rawX.set(nx)
+    rawY.set(ny)
+  }
+
+  function handleMouseLeave() {
+    rawX.set(0)
+    rawY.set(0)
+    setIsHovered(false)
+  }
+
+  return (
+    <motion.div
+      ref={cardRef}
+      variants={itemVariants}
+      style={{
+        rotateX,
+        rotateY,
+        transformPerspective: 900,
+        transformStyle: "preserve-3d",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      className="relative rounded-3xl overflow-hidden cursor-default"
+    >
+      {/* Main card background */}
+      <div
+        className="absolute inset-0"
+        style={{ background: style.gradient }}
+        aria-hidden
+      />
+
+      {/* Diagonal accent stripe — top-left corner slash */}
+      <div
+        className="absolute top-0 left-0 w-24 h-24 pointer-events-none"
+        style={{
+          background: `linear-gradient(135deg, ${style.stripeColor}33 0%, transparent 60%)`,
+          clipPath: "polygon(0 0, 100% 0, 0 100%)",
+        }}
+        aria-hidden
+      />
+
+      {/* Thin top border line in accent color */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[2px] pointer-events-none"
+        style={{
+          background: `linear-gradient(90deg, ${style.stripeColor}, transparent 80%)`,
+        }}
+        aria-hidden
+      />
+
+      {/* Ghost number — editorial depth layer */}
+      <div
+        className="absolute bottom-3 right-4 font-black leading-none select-none pointer-events-none"
+        style={{
+          fontSize: "clamp(6rem, 14vw, 10rem)",
+          color: style.ghostColor,
+          fontVariantNumeric: "tabular-nums",
+          letterSpacing: "-0.05em",
+        }}
+        aria-hidden
+      >
+        {style.label}
+      </div>
+
+      {/* Shimmer sweep on hover */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        initial={{ x: "-110%" }}
+        animate={{ x: isHovered ? "110%" : "-110%" }}
+        transition={{ duration: 0.65, ease: "easeInOut" }}
+        style={{
+          background:
+            "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.07) 50%, transparent 70%)",
+        }}
+        aria-hidden
+      />
+
+      {/* Card content — lifted in z so it floats over decorations */}
+      <div className="relative z-10 p-7 md:p-8 flex flex-col min-h-[240px] md:min-h-[280px]">
+
+        {/* Icon with glow halo */}
+        <motion.div
+          className="mb-6 w-16 h-16 rounded-2xl flex items-center justify-center relative"
+          animate={isHovered ? { scale: 1.12, rotate: 8 } : { scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 280, damping: 20 }}
+          style={{
+            background: `radial-gradient(circle at 30% 30%, ${style.iconRingFrom}22, ${style.iconRingTo}11)`,
+            boxShadow: isHovered
+              ? `0 0 0 1px ${style.iconRingFrom}55, 0 0 28px ${style.glowColor}`
+              : `0 0 0 1px ${style.iconRingFrom}33, 0 0 12px ${style.glowColor}66`,
+          }}
+        >
+          <Icon
+            size={32}
+            strokeWidth={1.75}
+            aria-hidden
+            style={{ color: style.iconColor }}
+          />
+        </motion.div>
+
+        {/* Title */}
+        <h3
+          className="text-2xl md:text-3xl font-extrabold leading-tight text-white mb-3"
+          style={{ textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}
+        >
+          {feat.title}
+        </h3>
+
+        {/* Body text */}
+        <p
+          className="text-base md:text-lg leading-relaxed font-medium"
+          style={{ color: "rgba(255,255,255,0.72)" }}
+        >
+          {feat.text}
+        </p>
+
+        {/* Bottom accent line — grows on hover */}
+        <motion.div
+          className="mt-auto pt-6"
+          initial={false}
+        >
+          <motion.div
+            className="h-[3px] rounded-full"
+            style={{ background: style.stripeColor }}
+            animate={{ width: isHovered ? "100%" : "32px" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+          />
+        </motion.div>
+      </div>
+    </motion.div>
+  )
 }
 
 export default function FestivalDescription({
@@ -176,35 +354,15 @@ export default function FestivalDescription({
         {/* ── Feature cards ── */}
         {features && features.length > 0 && (
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 md:mb-16"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12 md:mb-16"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
-            {features.map((feat, i) => {
-              const Icon = ICON_MAP[feat.icon] ?? Star
-              const style = FEATURE_STYLES[i % FEATURE_STYLES.length]
-              return (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  className={`relative bg-white rounded-2xl p-6 border ${style.border} shadow-sm hover:shadow-md transition-shadow`}
-                >
-                  {/* Icon badge */}
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl border ${style.iconBg} mb-4`}>
-                    <Icon size={24} className={style.iconColor} strokeWidth={2} aria-hidden />
-                  </div>
-
-                  <h3 className="text-xl font-extrabold text-foreground mb-2 leading-snug">
-                    {feat.title}
-                  </h3>
-                  <p className="text-base text-foreground/70 leading-relaxed">
-                    {feat.text}
-                  </p>
-                </motion.div>
-              )
-            })}
+            {features.map((feat, i) => (
+              <FeatureCard key={i} feat={feat} index={i} />
+            ))}
           </motion.div>
         )}
 
