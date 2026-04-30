@@ -10,7 +10,10 @@ export default async function FrontendLayout({ children }: { children: React.Rea
 
   return (
     <>
-      <Header />
+      <Header
+        ctaUrl={settings.hero?.cta_url || undefined}
+        ctaText={settings.hero?.cta_text || undefined}
+      />
       <main className="pt-16 md:pt-20"><PageTransition>{children}</PageTransition></main>
       <Footer
         orgName={settings.footer?.org_name || undefined}

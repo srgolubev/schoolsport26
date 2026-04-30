@@ -15,7 +15,14 @@ const navLinks = [
   { label: "Как добраться", href: "#map" },
 ]
 
-export default function Header() {
+interface HeaderProps {
+  ctaUrl?: string
+  ctaText?: string
+}
+
+export default function Header({ ctaUrl, ctaText }: HeaderProps = {}) {
+  const ctaHref = ctaUrl || "https://gorizonty.mos.ru/events/31792"
+  const ctaLabel = ctaText || "Участвовать"
   const pathname = usePathname()
   const isHome = pathname === "/"
   const [isScrolled, setIsScrolled] = useState(false)
@@ -116,7 +123,7 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <motion.a
-              href="https://gorizonty.mos.ru/events/18948"
+              href={ctaHref}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex items-center px-7 py-3 rounded-full text-base font-bold text-white bg-accent cursor-pointer"
@@ -125,7 +132,7 @@ export default function Header() {
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
-              Участвовать
+              {ctaLabel}
             </motion.a>
 
             <button
@@ -168,12 +175,12 @@ export default function Header() {
                 )
               })}
               <a
-                href="https://gorizonty.mos.ru/events/18948"
+                href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 w-full py-3 rounded-full text-white font-semibold text-center bg-accent block"
               >
-                Участвовать
+                {ctaLabel}
               </a>
             </nav>
           </motion.div>

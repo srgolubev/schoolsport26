@@ -201,7 +201,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
           custom={4} variants={fadeUp} initial="hidden" animate="visible"
         >
           <motion.a
-            href={ctaUrl || "https://gorizonty.mos.ru/events/18948"}
+            href={ctaUrl || "https://gorizonty.mos.ru/events/31792"}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg text-white font-bold bg-accent cursor-pointer"
@@ -209,7 +209,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
             whileHover={{ scale: 1.05, boxShadow: "0 10px 32px rgba(249,115,22,0.5)" }}
             whileTap={{ scale: 0.97 }}
           >
-            {ctaText || "Хочу участвовать"}
+            {ctaText || "Участвовать"}
             <ArrowRight size={18} />
           </motion.a>
           <motion.a
