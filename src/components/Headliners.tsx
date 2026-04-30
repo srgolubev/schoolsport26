@@ -84,9 +84,11 @@ export default function Headliners({ items }: HeadlinersProps) {
 
               {/* Text */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <p className="text-base font-semibold tracking-widest uppercase text-primary mb-2 leading-none">
-                  {headliner.role}
-                </p>
+                {headliner.role && (
+                  <p className="text-base font-semibold tracking-widest uppercase text-primary mb-2 leading-none">
+                    {headliner.role}
+                  </p>
+                )}
                 <h3 className="text-4xl md:text-5xl font-extrabold leading-tight text-white drop-shadow-md">
                   {headliner.name}
                 </h3>
