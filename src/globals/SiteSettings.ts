@@ -123,9 +123,9 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'map', type: 'group', label: 'Карта',
       fields: [
-        { name: 'latitude', type: 'number', defaultValue: 55.715527 },
-        { name: 'longitude', type: 'number', defaultValue: 37.561301 },
-        { name: 'address', type: 'text', defaultValue: 'Олимпийский комплекс «Лужники», Южное спортивное ядро' },
+        { name: 'latitude', type: 'number', defaultValue: 55.717574 },
+        { name: 'longitude', type: 'number', defaultValue: 37.550701 },
+        { name: 'address', type: 'text', defaultValue: 'Олимпийский комплекс «Лужники», площадь перед малой спортивной ареной' },
       ],
     },
     {
