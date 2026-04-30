@@ -4,19 +4,19 @@ import React from 'react'
 import '@payloadcms/next/css'
 
 export const metadata: Metadata = {
-  title: 'Фестиваль школьного спорта 2026',
+  title: 'Фестиваль школьного и студенческого спорта 2026',
   description: 'Официальный сайт Фестиваля школьного спорта 2026 — соревнования, мастер-классы, активные зоны для детей и всей семьи',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://festival.schoolsportmos.ru'),
   openGraph: {
-    title: 'Фестиваль школьного спорта 2026',
+    title: 'Фестиваль школьного и студенческого спорта 2026',
     description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
     type: 'website',
     locale: 'ru_RU',
-    images: [{ url: '/images/head_banner.jpg', width: 1200, height: 630, alt: 'Фестиваль школьного спорта' }],
+    images: [{ url: '/images/head_banner.jpg', width: 1200, height: 630, alt: 'Фестиваль школьного и студенческого спорта'}],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Фестиваль школьного спорта 2026',
+    title: 'Фестиваль школьного и студенческого спорта 2026',
     description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
     images: ['/images/head_banner.jpg'],
   },

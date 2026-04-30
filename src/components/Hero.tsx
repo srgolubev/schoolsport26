@@ -172,7 +172,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-extrabold leading-tight text-white mb-4"
           custom={1} variants={fadeUp} initial="hidden" animate="visible"
         >
-          {title || "Фестиваль школьного спорта!"}
+          {title || "Фестиваль школьного и студенческого спорта"}
         </motion.h1>
 
         <motion.p

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps) {
   const section = result.docs[0]
   if (!section) return { title: "Не найдено" }
   return {
-    title: `${section.title} — Фестиваль школьного спорта`,
+    title: `${section.title} — Фестиваль школьного и студенческого спорта`,
     description: `Секция «${section.title}» на Фестивале школьного спорта 2026`,
   }
 }
