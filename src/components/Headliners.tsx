@@ -4,26 +4,99 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import SectionHeader from "./ui/SectionHeader"
 
-interface HeadlinersProps {
-  bannerUrl?: string
+interface Headliner {
+  photoUrl: string
+  name: string
+  role: string
 }
 
-export default function Headliners({ bannerUrl }: HeadlinersProps) {
+interface HeadlinersProps {
+  items?: Headliner[]
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      delay: i * 0.15,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+}
+
+export default function Headliners({ items }: HeadlinersProps) {
+  if (!items || items.length === 0) return null
+
   return (
     <section className="py-16 md:py-24 bg-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Хедлайнеры" subtitle="Главная сцена фестиваля" className="[&_h2]:text-white [&_p]:text-white/70" />
-        {bannerUrl && (
-          <motion.div
-            className="rounded-2xl overflow-hidden"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <Image src={bannerUrl} alt="Хедлайнеры фестиваля" width={1200} height={400} className="w-full h-auto object-cover" />
-          </motion.div>
-        )}
+        <SectionHeader
+          title="Хедлайнеры"
+          subtitle="Главная сцена фестиваля"
+          className="[&_h2]:text-white [&_p]:text-white/70"
+        />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
+          {items.map((headliner, i) => (
+            <motion.div
+              key={headliner.name}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              className="group relative overflow-hidden rounded-2xl"
+              style={{ aspectRatio: "4 / 5" }}
+              whileHover={{
+                scale: 1.025,
+                transition: { type: "spring", stiffness: 300, damping: 22 },
+              }}
+            >
+              {/* Photo */}
+              <Image
+                src={headliner.photoUrl}
+                alt={headliner.name}
+                fill
+                className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+
+              {/* Cinematic gradient overlay — bottom 60% */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.55) 40%, transparent 70%)",
+                }}
+              />
+
+              {/* Subtle top vignette to separate from section bg */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(10,10,10,0.20) 0%, transparent 25%)",
+                }}
+              />
+
+              {/* Text */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <p className="text-base font-semibold tracking-widest uppercase text-primary mb-2 leading-none">
+                  {headliner.role}
+                </p>
+                <h3 className="text-4xl md:text-5xl font-extrabold leading-tight text-white drop-shadow-md">
+                  {headliner.name}
+                </h3>
+              </div>
+
+              {/* Hover accent ring */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-white/0 group-hover:ring-white/10 transition-all duration-500 pointer-events-none" />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

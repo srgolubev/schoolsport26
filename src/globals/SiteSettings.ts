@@ -18,7 +18,23 @@ export const SiteSettings: GlobalConfig = {
     { name: 'festival_description', type: 'textarea', label: 'Описание фестиваля (HTML)', admin: { rows: 12 } },
     { name: 'festival_cta_url', type: 'text', label: 'Ссылка на регистрацию (О фестивале)' },
     { name: 'festival_cta_text', type: 'text', defaultValue: 'Зарегистрироваться', label: 'Текст кнопки регистрации' },
-    { name: 'headliners_banner', type: 'upload', relationTo: 'media', label: 'Баннер хедлайнеров' },
+    { name: 'headliners_banner', type: 'upload', relationTo: 'media', label: 'Баннер хедлайнеров (legacy, не используется)', admin: { hidden: true } },
+    {
+      name: 'headliner_1', type: 'group', label: 'Хедлайнер 1',
+      fields: [
+        { name: 'photo', type: 'upload', relationTo: 'media' },
+        { name: 'name', type: 'text', label: 'Имя' },
+        { name: 'role', type: 'text', label: 'Роль / подпись', defaultValue: 'Артист' },
+      ],
+    },
+    {
+      name: 'headliner_2', type: 'group', label: 'Хедлайнер 2',
+      fields: [
+        { name: 'photo', type: 'upload', relationTo: 'media' },
+        { name: 'name', type: 'text', label: 'Имя' },
+        { name: 'role', type: 'text', label: 'Роль / подпись', defaultValue: 'Артист' },
+      ],
+    },
     {
       name: 'map', type: 'group', label: 'Карта',
       fields: [

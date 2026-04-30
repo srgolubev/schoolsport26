@@ -68,9 +68,17 @@ export default async function HomePage() {
     ? shuffle(withReg).slice(0, 3)
     : [...shuffle(withReg), ...shuffle(withoutReg).slice(0, 3 - withReg.length)]
 
-  const bannerUrl = typeof settings.headliners_banner === 'object' && settings.headliners_banner !== null
-    ? mediaUrl((settings.headliners_banner as { url?: string }).url)
-    : undefined
+  const buildHeadliner = (group: unknown) => {
+    if (!group || typeof group !== 'object') return null
+    const g = group as { photo?: { url?: string } | number | null; name?: string; role?: string }
+    const url = typeof g.photo === 'object' && g.photo !== null ? mediaUrl(g.photo.url) : undefined
+    if (!url || !g.name) return null
+    return { photoUrl: url, name: g.name, role: g.role || '' }
+  }
+  const headliners = [
+    buildHeadliner((settings as unknown as Record<string, unknown>).headliner_1),
+    buildHeadliner((settings as unknown as Record<string, unknown>).headliner_2),
+  ].filter((h): h is { photoUrl: string; name: string; role: string } => h !== null)
 
   return (
     <>
@@ -93,7 +101,7 @@ export default async function HomePage() {
       />
       <ActivitiesCarousel activities={activities} />
       <SectionsPreview sections={previewSections} totalCount={sectionsResult.totalDocs} />
-      <Headliners bannerUrl={bannerUrl} />
+      <Headliners items={headliners} />
       <ScheduleTimeline items={schedule} />
       <PartnersGrid partners={partners} />
       <YandexMap
