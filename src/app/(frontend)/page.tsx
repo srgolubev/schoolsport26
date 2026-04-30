@@ -1,6 +1,7 @@
 import { getPayloadClient } from "@/lib/payload"
 import Hero from "@/components/Hero"
 import FestivalDescription from "@/components/FestivalDescription"
+import type { FestivalFeature } from "@/components/FestivalDescription"
 import ActivitiesCarousel from "@/components/ActivitiesCarousel"
 import SectionsPreview from "@/components/SectionsPreview"
 import Headliners from "@/components/Headliners"
@@ -68,6 +69,35 @@ export default async function HomePage() {
     ? shuffle(withReg).slice(0, 3)
     : [...shuffle(withReg), ...shuffle(withoutReg).slice(0, 3 - withReg.length)]
 
+  // ── Extract structured festival description fields ──────────────────────────
+  const s = settings as unknown as Record<string, unknown>
+
+  const festivalLede = typeof s.festival_lede === 'string' ? s.festival_lede : undefined
+  const festivalIntro = typeof s.festival_intro === 'string' ? s.festival_intro : undefined
+  const festivalMotto = typeof s.festival_motto === 'string' ? s.festival_motto : undefined
+  const festivalBridge = typeof s.festival_bridge === 'string' ? s.festival_bridge : undefined
+  const festivalFinale = typeof s.festival_finale === 'string' ? s.festival_finale : undefined
+  const festivalClosing = typeof s.festival_closing === 'string' ? s.festival_closing : undefined
+  const festivalFinalHook = typeof s.festival_final_hook === 'string' ? s.festival_final_hook : undefined
+  const festivalCtaUrl = typeof s.festival_cta_url === 'string' ? s.festival_cta_url : undefined
+  const festivalCtaText = typeof s.festival_cta_text === 'string' ? s.festival_cta_text : undefined
+
+  // 3 group-поля festival_feature_1..3 — собираем в массив
+  const buildFeature = (group: unknown): FestivalFeature | null => {
+    if (!group || typeof group !== 'object') return null
+    const g = group as Record<string, unknown>
+    const icon = g.icon === 'star' || g.icon === 'music' || g.icon === 'trophy' ? g.icon : 'star'
+    const title = typeof g.title === 'string' ? g.title : ''
+    const text = typeof g.text === 'string' ? g.text : ''
+    if (!title) return null
+    return { icon, title, text }
+  }
+  const festivalFeatures: FestivalFeature[] = [
+    buildFeature(s.festival_feature_1),
+    buildFeature(s.festival_feature_2),
+    buildFeature(s.festival_feature_3),
+  ].filter((f): f is FestivalFeature => f !== null)
+
   const buildHeadliner = (group: unknown) => {
     if (!group || typeof group !== 'object') return null
     const g = group as { photo?: { url?: string } | number | null; name?: string; role?: string }
@@ -95,9 +125,16 @@ export default async function HomePage() {
         }}
       />
       <FestivalDescription
-        content={(settings as unknown as Record<string, string>).festival_description || undefined}
-        ctaUrl={(settings as unknown as Record<string, string>).festival_cta_url || undefined}
-        ctaText={(settings as unknown as Record<string, string>).festival_cta_text || undefined}
+        lede={festivalLede}
+        intro={festivalIntro}
+        motto={festivalMotto}
+        bridge={festivalBridge}
+        features={festivalFeatures.length > 0 ? festivalFeatures : undefined}
+        finale={festivalFinale}
+        closing={festivalClosing}
+        finalHook={festivalFinalHook}
+        ctaUrl={festivalCtaUrl}
+        ctaText={festivalCtaText}
       />
       <ActivitiesCarousel activities={activities} />
       <SectionsPreview sections={previewSections} totalCount={sectionsResult.totalDocs} />

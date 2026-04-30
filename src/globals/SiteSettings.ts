@@ -15,7 +15,92 @@ export const SiteSettings: GlobalConfig = {
         { name: 'cta_text', type: 'text', defaultValue: 'Участвовать' },
       ],
     },
-    { name: 'festival_description', type: 'textarea', label: 'Описание фестиваля (HTML)', admin: { rows: 12 } },
+    // Legacy field — keep hidden so existing data is not lost
+    { name: 'festival_description', type: 'textarea', label: 'Описание фестиваля (HTML, устаревшее)', admin: { hidden: true } },
+    // Structured festival description fields
+    {
+      name: 'festival_lede',
+      type: 'textarea',
+      label: 'О фестивале — Крюк (большой заголовок)',
+      admin: { rows: 2, description: 'Пример: «Большие победы начинаются с маленького шага!»' },
+    },
+    {
+      name: 'festival_intro',
+      type: 'textarea',
+      label: 'О фестивале — Вводный абзац',
+      admin: { description: 'Краткое описание фестиваля, 1–3 предложения.' },
+    },
+    {
+      name: 'festival_motto',
+      type: 'text',
+      label: 'О фестивале — Девиз сезона (pull-quote)',
+      admin: { description: 'Слоган сезона, например «Важен каждый шаг». Отображается крупно по центру.' },
+    },
+    {
+      name: 'festival_bridge',
+      type: 'textarea',
+      label: 'О фестивале — Связующий абзац',
+    },
+    // 3 фичи — каждая отдельной group (плоские колонки в БД, без array-таблицы)
+    {
+      name: 'festival_feature_1', type: 'group', label: 'О фестивале — Фича 1',
+      fields: [
+        { name: 'icon', type: 'select', label: 'Иконка', defaultValue: 'star',
+          options: [
+            { label: 'Звезда (гости)', value: 'star' },
+            { label: 'Музыка (драйв)', value: 'music' },
+            { label: 'Кубок (активности)', value: 'trophy' },
+          ],
+        },
+        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'text', type: 'textarea', label: 'Описание' },
+      ],
+    },
+    {
+      name: 'festival_feature_2', type: 'group', label: 'О фестивале — Фича 2',
+      fields: [
+        { name: 'icon', type: 'select', label: 'Иконка', defaultValue: 'music',
+          options: [
+            { label: 'Звезда (гости)', value: 'star' },
+            { label: 'Музыка (драйв)', value: 'music' },
+            { label: 'Кубок (активности)', value: 'trophy' },
+          ],
+        },
+        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'text', type: 'textarea', label: 'Описание' },
+      ],
+    },
+    {
+      name: 'festival_feature_3', type: 'group', label: 'О фестивале — Фича 3',
+      fields: [
+        { name: 'icon', type: 'select', label: 'Иконка', defaultValue: 'trophy',
+          options: [
+            { label: 'Звезда (гости)', value: 'star' },
+            { label: 'Музыка (драйв)', value: 'music' },
+            { label: 'Кубок (активности)', value: 'trophy' },
+          ],
+        },
+        { name: 'title', type: 'text', label: 'Заголовок' },
+        { name: 'text', type: 'textarea', label: 'Описание' },
+      ],
+    },
+    {
+      name: 'festival_finale',
+      type: 'textarea',
+      label: 'О фестивале — Большой финал (callout)',
+      admin: { description: 'Текст про подведение итогов сезона.' },
+    },
+    {
+      name: 'festival_closing',
+      type: 'textarea',
+      label: 'О фестивале — Завершающий абзац',
+    },
+    {
+      name: 'festival_final_hook',
+      type: 'text',
+      label: 'О фестивале — Финальная фраза (жирно)',
+      admin: { description: 'Например: «Твой шаг может стать решающим. Ждём тебя!»' },
+    },
     { name: 'festival_cta_url', type: 'text', label: 'Ссылка на регистрацию (О фестивале)' },
     { name: 'festival_cta_text', type: 'text', defaultValue: 'Зарегистрироваться', label: 'Текст кнопки регистрации' },
     { name: 'headliners_banner', type: 'upload', relationTo: 'media', label: 'Баннер хедлайнеров (legacy, не используется)', admin: { hidden: true } },
