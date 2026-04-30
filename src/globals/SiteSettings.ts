@@ -15,7 +15,9 @@ export const SiteSettings: GlobalConfig = {
         { name: 'cta_text', type: 'text', defaultValue: 'Хочу участвовать' },
       ],
     },
-    { name: 'festival_description', type: 'richText', label: 'Описание фестиваля' },
+    { name: 'festival_description', type: 'textarea', label: 'Описание фестиваля (HTML)', admin: { rows: 12 } },
+    { name: 'festival_cta_url', type: 'text', label: 'Ссылка на регистрацию (О фестивале)' },
+    { name: 'festival_cta_text', type: 'text', defaultValue: 'Зарегистрироваться', label: 'Текст кнопки регистрации' },
     { name: 'headliners_banner', type: 'upload', relationTo: 'media', label: 'Баннер хедлайнеров' },
     {
       name: 'map', type: 'group', label: 'Карта',

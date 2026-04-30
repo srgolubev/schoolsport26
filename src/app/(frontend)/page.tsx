@@ -86,7 +86,11 @@ export default async function HomePage() {
           partners: partnersResult.totalDocs,
         }}
       />
-      <FestivalDescription />
+      <FestivalDescription
+        content={(settings as unknown as Record<string, string>).festival_description || undefined}
+        ctaUrl={(settings as unknown as Record<string, string>).festival_cta_url || undefined}
+        ctaText={(settings as unknown as Record<string, string>).festival_cta_text || undefined}
+      />
       <ActivitiesCarousel activities={activities} />
       <SectionsPreview sections={previewSections} totalCount={sectionsResult.totalDocs} />
       <Headliners bannerUrl={bannerUrl} />
