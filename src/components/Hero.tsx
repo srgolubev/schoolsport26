@@ -11,15 +11,15 @@ function parseBadges(subtitle?: string) {
   if (subtitle && subtitle.includes("•")) {
     const parts = subtitle.split("•").map(s => s.trim())
     return [
-      { icon: Calendar, label: parts[0] || "24 мая 2025" },
+      { icon: Calendar, label: parts[0] || "23 мая 2026" },
       { icon: MapPin, label: parts[1] || "Лужники" },
-      { icon: Users, label: "10 000+ участников" },
+      { icon: Users, label: "30 000+ участников" },
     ]
   }
   return [
-    { icon: Calendar, label: subtitle || "24 мая 2025" },
+    { icon: Calendar, label: subtitle || "23 мая 2026" },
     { icon: MapPin, label: "Лужники" },
-    { icon: Users, label: "10 000+ участников" },
+    { icon: Users, label: "30 000+ участников" },
   ]
 }
 
@@ -165,7 +165,7 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
           className="text-sm font-semibold text-white/90 tracking-[2px] uppercase mb-3"
           custom={0} variants={fadeUp} initial="hidden" animate="visible"
         >
-          {subtitle || "24 мая 2025 • Лужники"}
+          {subtitle || "23 мая 2026 • Лужники"}
         </motion.div>
 
         <motion.h1

@@ -9,7 +9,7 @@ export const SiteSettings: GlobalConfig = {
       name: 'hero', type: 'group', label: 'Hero-секция',
       fields: [
         { name: 'title', type: 'text', defaultValue: 'Фестиваль школьного спорта!' },
-        { name: 'subtitle', type: 'text', defaultValue: '24 мая 2025 • Лужники' },
+        { name: 'subtitle', type: 'text', defaultValue: '23 мая 2026 • Лужники' },
         { name: 'description', type: 'textarea' },
         { name: 'cta_url', type: 'text', defaultValue: 'https://gorizonty.mos.ru/events/31792' },
         { name: 'cta_text', type: 'text', defaultValue: 'Участвовать' },

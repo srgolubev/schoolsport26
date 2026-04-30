@@ -4,7 +4,7 @@ import { mediaUrl } from "@/lib/mediaUrl"
 import SectionHeader from "@/components/ui/SectionHeader"
 
 export const metadata = {
-  title: "Соревнования — Фестиваль школьного спорта 2025",
+  title: "Соревнования — Фестиваль школьного спорта 2026",
   description: "Каталог всех секций фестиваля: соревнования, мастер-классы, семейные активности и многое другое.",
 }
 
