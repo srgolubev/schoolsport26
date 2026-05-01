@@ -12,18 +12,17 @@ export const metadata: Metadata = {
     description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
     type: 'website',
     locale: 'ru_RU',
-    siteName: 'Фестиваль школьного и студенческого спорта',
     url: '/',
-    images: [{ url: '/images/og-festival.jpg?v=2', width: 1200, height: 630, alt: 'Фестиваль школьного и студенческого спорта — главная сцена', type: 'image/jpeg' }],
+    images: [{ url: '/images/og-festival-2026.jpg', width: 1200, height: 630, alt: 'Фестиваль школьного и студенческого спорта — главная сцена', type: 'image/jpeg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Фестиваль школьного и студенческого спорта 2026',
     description: 'Соревнования, мастер-классы, активные зоны для детей и всей семьи',
-    images: [{ url: '/images/og-festival.jpg?v=2', alt: 'Фестиваль школьного и студенческого спорта — главная сцена' }],
+    images: [{ url: '/images/og-festival-2026.jpg', alt: 'Фестиваль школьного и студенческого спорта — главная сцена' }],
   },
   other: {
-    'vk:image': '/images/og-festival.jpg?v=2',
+    'vk:image': 'https://festival.schoolsportmos.ru/images/og-festival-2026.jpg',
   },
 }
 

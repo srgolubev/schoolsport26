@@ -118,7 +118,7 @@ export default async function HomePage() {
       (settings as unknown as { meta?: { description?: string } }).meta?.description ||
       settings.hero?.description ||
       undefined,
-    bannerUrl: "/images/og-festival.jpg",
+    bannerUrl: "/images/og-festival-2026.jpg",
     ctaUrl: settings.hero?.cta_url || undefined,
     ctaText: settings.hero?.cta_text || undefined,
     address: settings.map?.address || undefined,
