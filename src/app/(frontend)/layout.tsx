@@ -2,6 +2,7 @@ import "./globals.css"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import PageTransition from "@/components/PageTransition"
+import CookieConsent from "@/components/CookieConsent"
 import { getPayloadClient } from "@/lib/payload"
 
 export default async function FrontendLayout({ children }: { children: React.ReactNode }) {
@@ -22,6 +23,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         telegramUrl={settings.footer?.telegram_url || undefined}
         websiteUrl={settings.footer?.website_url || undefined}
       />
+      <CookieConsent />
     </>
   )
 }
