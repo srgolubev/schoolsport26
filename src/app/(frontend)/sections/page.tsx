@@ -2,6 +2,8 @@ import { getPayloadClient } from "@/lib/payload"
 import SectionsFilter from "@/components/SectionsFilter"
 import { mediaUrl } from "@/lib/mediaUrl"
 import SectionHeader from "@/components/ui/SectionHeader"
+import JsonLd from "@/components/JsonLd"
+import { buildBreadcrumbJsonLd } from "@/lib/structuredData"
 
 export const metadata = {
   title: "Соревнования — Фестиваль школьного и студенческого спорта 2026",
@@ -32,8 +34,14 @@ export default async function SectionsPage() {
       : [],
   }))
 
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Главная", url: "/" },
+    { name: "Соревнования", url: "/sections" },
+  ])
+
   return (
     <div className="py-24 md:py-32 bg-bg">
+      <JsonLd data={breadcrumb} id="ld-breadcrumb" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title="Соревнования" subtitle={`${sections.length} направлений`} />
         <SectionsFilter sections={sections} />

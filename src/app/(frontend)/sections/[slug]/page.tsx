@@ -4,7 +4,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react"
 import FadeUp from "@/components/ui/FadeUp"
+import JsonLd from "@/components/JsonLd"
 import { mediaUrl } from "@/lib/mediaUrl"
+import { buildBreadcrumbJsonLd } from "@/lib/structuredData"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -47,8 +49,15 @@ export default async function SectionPage({ params }: PageProps) {
         .map((img) => ({ url: mediaUrl(img.url as string | undefined), alt: (img.alt as string) || section.title }))
     : []
 
+  const breadcrumb = buildBreadcrumbJsonLd([
+    { name: "Главная", url: "/" },
+    { name: "Соревнования", url: "/sections" },
+    { name: section.title, url: `/sections/${section.slug}` },
+  ])
+
   return (
     <div className="py-24 md:py-32 bg-bg">
+      <JsonLd data={breadcrumb} id="ld-breadcrumb" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <FadeUp>
           <Link href="/sections" className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary-dark transition-colors mb-8">

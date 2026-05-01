@@ -8,7 +8,9 @@ import Headliners from "@/components/Headliners"
 import ScheduleTimeline from "@/components/ScheduleTimeline"
 import PartnersGrid from "@/components/PartnersGrid"
 import YandexMap from "@/components/YandexMap"
+import JsonLd from "@/components/JsonLd"
 import { mediaUrl } from "@/lib/mediaUrl"
+import { buildFestivalJsonLd, buildWebSiteJsonLd } from "@/lib/structuredData"
 
 export default async function HomePage() {
   const payload = await getPayloadClient()
@@ -110,8 +112,28 @@ export default async function HomePage() {
     buildHeadliner((settings as unknown as Record<string, unknown>).headliner_2),
   ].filter((h): h is { photoUrl: string; name: string; role: string } => h !== null)
 
+  const festivalJsonLd = buildFestivalJsonLd({
+    name: settings.hero?.title || "Фестиваль школьного и студенческого спорта",
+    description:
+      (settings as unknown as { meta?: { description?: string } }).meta?.description ||
+      settings.hero?.description ||
+      undefined,
+    bannerUrl: "/images/head_banner.jpg",
+    ctaUrl: settings.hero?.cta_url || undefined,
+    ctaText: settings.hero?.cta_text || undefined,
+    address: settings.map?.address || undefined,
+    latitude: settings.map?.latitude || undefined,
+    longitude: settings.map?.longitude || undefined,
+    schedule,
+    headliners: headliners.map((h) => ({ name: h.name, photoUrl: h.photoUrl })),
+    organizerName: settings.footer?.org_description || undefined,
+    organizerUrl: settings.footer?.website_url || undefined,
+  })
+
   return (
     <>
+      <JsonLd data={buildWebSiteJsonLd()} id="ld-website" />
+      <JsonLd data={festivalJsonLd} id="ld-festival" />
       <Hero
         title={settings.hero?.title || undefined}
         subtitle={settings.hero?.subtitle || undefined}
