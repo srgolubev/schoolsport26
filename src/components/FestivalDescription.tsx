@@ -28,36 +28,36 @@ interface FestivalDescriptionProps {
 // Each feature card gets a full editorial identity
 const FEATURE_STYLES = [
   {
-    // Card 1 — Stars: deep aubergine to magenta
-    gradient: "linear-gradient(145deg, #0a0010 0%, #2d0a1f 45%, #5a1240 100%)",
+    // Card 1 — Stars: medium aubergine to bright magenta
+    gradient: "linear-gradient(145deg, #2d0a1f 0%, #5a1a40 45%, #a82869 100%)",
     stripeColor: "#FF3D9A",
     glowColor: "rgba(255,61,154,0.55)",
-    ghostColor: "rgba(255,61,154,0.07)",
+    ghostColor: "rgba(255,255,255,0.10)",
     iconRingFrom: "#FF3D9A",
     iconRingTo: "#FF6BD6",
-    iconColor: "#FF3D9A",
+    iconColor: "#FFFFFF",
     label: "01",
   },
   {
-    // Card 2 — Music: deep ocean to bright cyan
-    gradient: "linear-gradient(145deg, #001a26 0%, #003d4a 45%, #065c6e 100%)",
+    // Card 2 — Music: medium ocean to bright teal-cyan
+    gradient: "linear-gradient(145deg, #003d4a 0%, #06637a 45%, #0c8da3 100%)",
     stripeColor: "#2BD9D9",
     glowColor: "rgba(43,217,217,0.55)",
-    ghostColor: "rgba(43,217,217,0.07)",
+    ghostColor: "rgba(255,255,255,0.10)",
     iconRingFrom: "#2BD9D9",
     iconRingTo: "#7BBEEA",
-    iconColor: "#2BD9D9",
+    iconColor: "#FFFFFF",
     label: "02",
   },
   {
-    // Card 3 — Activities: deep midnight navy with lime accent
-    gradient: "linear-gradient(145deg, #050d12 0%, #0a1828 45%, #15304a 100%)",
+    // Card 3 — Activities: medium navy to mid blue with lime accent
+    gradient: "linear-gradient(145deg, #0a1828 0%, #1a3d6b 45%, #2c5e9c 100%)",
     stripeColor: "#B8F23C",
     glowColor: "rgba(184,242,60,0.55)",
-    ghostColor: "rgba(184,242,60,0.07)",
+    ghostColor: "rgba(255,255,255,0.10)",
     iconRingFrom: "#B8F23C",
     iconRingTo: "#FFD93D",
-    iconColor: "#B8F23C",
+    iconColor: "#FFFFFF",
     label: "03",
   },
 ]

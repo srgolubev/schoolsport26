@@ -31,12 +31,17 @@ export default function Headliners({ items }: HeadlinersProps) {
   if (!items || items.length === 0) return null
 
   return (
-    <section className="py-16 md:py-24 bg-dark text-white">
+    <section
+      className="py-16 md:py-24 text-foreground"
+      style={{
+        background:
+          "linear-gradient(180deg, #F4F8FB 0%, #E6EFF7 60%, #DCE9F4 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Хедлайнеры"
           subtitle="Главная сцена фестиваля"
-          className="[&_h2]:text-white [&_p]:text-white/70"
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
@@ -95,7 +100,7 @@ export default function Headliners({ items }: HeadlinersProps) {
               </div>
 
               {/* Hover accent ring */}
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-white/0 group-hover:ring-white/10 transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-foreground/0 group-hover:ring-accent/40 transition-all duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </div>
