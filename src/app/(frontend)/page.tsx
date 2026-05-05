@@ -65,11 +65,18 @@ export default async function HomePage() {
   }))
 
   const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5)
-  const withReg = allSections.filter((s) => s.registration_url)
-  const withoutReg = allSections.filter((s) => !s.registration_url)
-  const previewSections = withReg.length >= 3
-    ? shuffle(withReg).slice(0, 3)
-    : [...shuffle(withReg), ...shuffle(withoutReg).slice(0, 3 - withReg.length)]
+  const isAerobics = (s: { title?: string }) =>
+    typeof s.title === 'string' && s.title.toLowerCase().includes('аэроб')
+
+  const aerobics = allSections.find(isAerobics)
+  const others = allSections.filter((s) => !isAerobics(s))
+  const othersWithReg = others.filter((s) => s.registration_url)
+  const othersWithoutReg = others.filter((s) => !s.registration_url)
+  const need = aerobics ? 2 : 3
+  const picked = othersWithReg.length >= need
+    ? shuffle(othersWithReg).slice(0, need)
+    : [...shuffle(othersWithReg), ...shuffle(othersWithoutReg).slice(0, need - othersWithReg.length)]
+  const previewSections = aerobics ? [aerobics, ...picked] : picked
 
   // ── Extract structured festival description fields ──────────────────────────
   const s = settings as unknown as Record<string, unknown>
