@@ -33,8 +33,8 @@ export default function ScheduleTimeline({ items }: ScheduleTimelineProps) {
                 <div
                   className="w-3 h-3 rounded-full border-2 border-white"
                   style={{
-                    background: i < items.length / 2 ? "#059669" : "#f97316",
-                    boxShadow: `0 0 8px ${i < items.length / 2 ? "rgba(5,150,105,0.4)" : "rgba(249,115,22,0.4)"}`,
+                    background: i < items.length / 2 ? "#4F9EDB" : "#FF3D9A",
+                    boxShadow: `0 0 8px ${i < items.length / 2 ? "rgba(79,158,219,0.4)" : "rgba(255,61,154,0.4)"}`,
                   }}
                 />
               </div>

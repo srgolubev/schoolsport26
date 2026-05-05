@@ -97,7 +97,7 @@ export default async function SectionPage({ params }: PageProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-bold bg-accent"
-              style={{ boxShadow: "0 6px 24px rgba(249,115,22,0.4)" }}
+              style={{ boxShadow: "0 6px 24px rgba(255,61,154,0.4)" }}
             >
               Зарегистрироваться <ArrowRight size={18} />
             </a>

@@ -28,36 +28,36 @@ interface FestivalDescriptionProps {
 // Each feature card gets a full editorial identity
 const FEATURE_STYLES = [
   {
-    // Card 1 — Stars: deep orange-to-crimson
-    gradient: "linear-gradient(145deg, #1a0a00 0%, #3d1500 45%, #7c2d12 100%)",
-    stripeColor: "#f97316",
-    glowColor: "rgba(249,115,22,0.55)",
-    ghostColor: "rgba(249,115,22,0.07)",
-    iconRingFrom: "#f97316",
-    iconRingTo: "#fb923c",
-    iconColor: "#f97316",
+    // Card 1 — Stars: deep aubergine to magenta
+    gradient: "linear-gradient(145deg, #0a0010 0%, #2d0a1f 45%, #5a1240 100%)",
+    stripeColor: "#FF3D9A",
+    glowColor: "rgba(255,61,154,0.55)",
+    ghostColor: "rgba(255,61,154,0.07)",
+    iconRingFrom: "#FF3D9A",
+    iconRingTo: "#FF6BD6",
+    iconColor: "#FF3D9A",
     label: "01",
   },
   {
-    // Card 2 — Music: deep emerald-to-teal
-    gradient: "linear-gradient(145deg, #001a0e 0%, #003d21 45%, #065f46 100%)",
-    stripeColor: "#10b981",
-    glowColor: "rgba(16,185,129,0.55)",
-    ghostColor: "rgba(16,185,129,0.07)",
-    iconRingFrom: "#10b981",
-    iconRingTo: "#34d399",
-    iconColor: "#10b981",
+    // Card 2 — Music: deep ocean to bright cyan
+    gradient: "linear-gradient(145deg, #001a26 0%, #003d4a 45%, #065c6e 100%)",
+    stripeColor: "#2BD9D9",
+    glowColor: "rgba(43,217,217,0.55)",
+    ghostColor: "rgba(43,217,217,0.07)",
+    iconRingFrom: "#2BD9D9",
+    iconRingTo: "#7BBEEA",
+    iconColor: "#2BD9D9",
     label: "02",
   },
   {
-    // Card 3 — Activities: deep indigo-to-emerald
-    gradient: "linear-gradient(145deg, #050d1a 0%, #0c1f3d 45%, #134e4a 100%)",
-    stripeColor: "#34d399",
-    glowColor: "rgba(52,211,153,0.55)",
-    ghostColor: "rgba(52,211,153,0.07)",
-    iconRingFrom: "#34d399",
-    iconRingTo: "#10b981",
-    iconColor: "#34d399",
+    // Card 3 — Activities: deep midnight navy with lime accent
+    gradient: "linear-gradient(145deg, #050d12 0%, #0a1828 45%, #15304a 100%)",
+    stripeColor: "#B8F23C",
+    glowColor: "rgba(184,242,60,0.55)",
+    ghostColor: "rgba(184,242,60,0.07)",
+    iconRingFrom: "#B8F23C",
+    iconRingTo: "#FFD93D",
+    iconColor: "#B8F23C",
     label: "03",
   },
 ]
@@ -298,7 +298,7 @@ export default function FestivalDescription({
               <motion.p
                 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none tracking-tight"
                 style={{
-                  background: "linear-gradient(135deg, #10b981 0%, #059669 50%, #f97316 100%)",
+                  background: "linear-gradient(135deg, #7BBEEA 0%, #4F9EDB 50%, #FF3D9A 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -356,7 +356,7 @@ export default function FestivalDescription({
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "linear-gradient(135deg, #059669 0%, #10b981 55%, #f97316 100%)",
+                  background: "linear-gradient(135deg, #4F9EDB 0%, #7BBEEA 55%, #FF3D9A 100%)",
                 }}
                 aria-hidden
               />

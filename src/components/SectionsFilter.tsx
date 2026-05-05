@@ -155,7 +155,7 @@ export default function SectionsFilter({ sections }: { sections: Section[] }) {
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold bg-accent text-sm"
-                            style={{ boxShadow: "0 4px 16px rgba(249,115,22,0.3)" }}
+                            style={{ boxShadow: "0 4px 16px rgba(255,61,154,0.3)" }}
                           >
                             Зарегистрироваться <ArrowRight size={16} />
                           </a>
