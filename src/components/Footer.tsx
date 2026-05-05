@@ -10,7 +10,12 @@ interface FooterProps {
 
 export default function Footer({ orgName, orgDescription, vkUrl, telegramUrl, websiteUrl }: FooterProps) {
   return (
-    <footer className="py-12 bg-dark text-white">
+    <footer
+      className="py-12 text-white"
+      style={{
+        background: "linear-gradient(135deg, #4F9EDB 0%, #7BBEEA 45%, #A8D8F2 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
           <Image src="/images/logo/mosobr.png" alt="Московское образование" width={240} height={60} className="h-10 md:h-12 w-auto brightness-0 invert" />

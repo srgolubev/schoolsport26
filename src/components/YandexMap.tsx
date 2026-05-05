@@ -43,9 +43,19 @@ export default function YandexMap({
   }, [latitude, longitude, address, loaded])
 
   return (
-    <section id="map" className="py-16 md:py-24 bg-bg">
+    <section
+      id="map"
+      className="py-16 md:py-24"
+      style={{
+        background: "linear-gradient(135deg, #4F9EDB 0%, #7BBEEA 45%, #A8D8F2 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title="Как добраться" subtitle={address} />
+        <SectionHeader
+          title="Как добраться"
+          subtitle={address}
+          className="[&_h2]:text-white [&_p]:text-white/80"
+        />
         <motion.div
           className="rounded-2xl overflow-hidden h-[400px]"
           ref={mapRef}
