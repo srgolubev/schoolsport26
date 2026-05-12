@@ -314,15 +314,8 @@ export default function Hero({ title, subtitle, description, ctaUrl, ctaText, st
           {title || "Фестиваль школьного и студенческого спорта"}
         </motion.h1>
 
-        <motion.p
-          className="text-base sm:text-lg text-white/85 max-w-xl 2xl:max-w-2xl mx-auto mb-6 leading-relaxed"
-          custom={2} variants={fadeUp} initial="hidden" animate="visible"
-        >
-          {description || "Более 90 спортивных секций, мастер-классы, соревнования и яркие выступления звёзд на главной сцене"}
-        </motion.p>
-
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-3 mb-8"
+          className="flex flex-wrap items-center justify-center gap-3 mb-8 mt-6"
           custom={3} variants={fadeUp} initial="hidden" animate="visible"
         >
           {badges.map(({ icon: Icon, label }) => (
