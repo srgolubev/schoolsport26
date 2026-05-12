@@ -119,6 +119,18 @@ export default function SectionsPreview({ sections, totalCount }: { sections: Se
                             </div>
                           )}
 
+                          {section.registration_url && !section.title.toLowerCase().includes("беговел") && (
+                            <a
+                              href={section.registration_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold bg-accent text-sm"
+                              style={{ boxShadow: "0 4px 16px rgba(255,61,154,0.3)" }}
+                            >
+                              Зарегистрироваться <ArrowRight size={16} />
+                            </a>
+                          )}
                         </div>
                       </div>
                     )}
