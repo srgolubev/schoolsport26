@@ -22,6 +22,14 @@ export default function Footer({ orgName, orgDescription, vkUrl, telegramUrl, we
           <div className="text-center md:text-left">
             <div className="text-base text-white/65">{orgDescription || "Московский центр воспитательных практик"}</div>
             <div className="text-sm text-white/50 mt-2">&copy; {new Date().getFullYear()} Все права защищены</div>
+            <a
+              href="/privacy-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm text-white/70 hover:text-white underline decoration-white/30 underline-offset-4 mt-2 transition-colors"
+            >
+              Политика обработки персональных данных
+            </a>
           </div>
         </div>
         <div className="flex gap-3">

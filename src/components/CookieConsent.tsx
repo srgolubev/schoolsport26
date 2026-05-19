@@ -51,7 +51,7 @@ export default function CookieConsent() {
                   Мы используем файлы cookie, чтобы сайт работал корректно и был удобнее.
                   Продолжая пользоваться сайтом, вы соглашаетесь с обработкой cookie и{" "}
                   <a
-                    href="https://schoolsportmos.ru/wp-content/uploads/2024/06/personal-data.pdf"
+                    href="/privacy-policy.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline decoration-primary/40 underline-offset-4 hover:decoration-primary transition-colors"
